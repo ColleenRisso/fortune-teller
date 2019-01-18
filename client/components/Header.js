@@ -40,100 +40,120 @@ const styles = theme => ({
   }
 })
 
-function Header(props) {
-  const {classes, onDrawerToggle} = props
+class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tabSelected: 'one'
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-  return (
-    <React.Fragment>
-      <AppBar color="primary" position="sticky" elevation={0}>
-        <Toolbar>
-          <Grid container spacing={8} alignItems="center">
-            <Hidden smUp>
+  handleChange = tabSelected => {
+    this.setState({
+      tabSelected: tabSelected
+    })
+    this.props.history.push(tabSelected)
+  }
+
+  render() {
+    const {classes, onDrawerToggle} = this.props
+    return (
+      <React.Fragment>
+        <AppBar color="primary" position="sticky" elevation={0}>
+          <Toolbar>
+            <Grid container spacing={8} alignItems="center">
+              <Hidden smUp>
+                <Grid item>
+                  <IconButton
+                    color="inherit"
+                    aria-label="Open drawer"
+                    onClick={onDrawerToggle}
+                    className={classes.menuButton}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Grid>
+              </Hidden>
+              <Grid item xs />
+              <Grid item>
+                <Typography className={classes.link} component="a" href="#">
+                  Developer Code
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Tooltip title="Alerts • No alters">
+                  <IconButton color="inherit">
+                    <NotificationsIcon />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
               <Grid item>
                 <IconButton
                   color="inherit"
-                  aria-label="Open drawer"
-                  onClick={onDrawerToggle}
-                  className={classes.menuButton}
+                  className={classes.iconButtonAvatar}
                 >
-                  <MenuIcon />
+                  <Avatar
+                    className={classes.avatar}
+                    src="https://cdn3.iconfinder.com/data/icons/user-icon-3-1/100/user_3_Artboard_1_copy_20-512.png"
+                  />
                 </IconButton>
               </Grid>
-            </Hidden>
-            <Grid item xs />
-            <Grid item>
-              <Typography className={classes.link} component="a" href="#">
-                Go to docs
-              </Typography>
             </Grid>
-            <Grid item>
-              <Tooltip title="Alerts • No alters">
-                <IconButton color="inherit">
-                  <NotificationsIcon />
-                </IconButton>
-              </Tooltip>
+          </Toolbar>
+        </AppBar>
+        <AppBar
+          component="div"
+          className={classes.secondaryBar}
+          color="primary"
+          position="static"
+          elevation={0}
+        >
+          <Toolbar>
+            <Grid container alignItems="center" spacing={8}>
+              <Grid item xs>
+                <Typography color="inherit" variant="h5">
+                  Fortune Teller
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Button
+                  className={classes.button}
+                  variant="outlined"
+                  color="inherit"
+                  size="small"
+                >
+                  Form Assistance
+                </Button>
+              </Grid>
+              <Grid item>
+                <Tooltip title="Help">
+                  <IconButton color="inherit">
+                    <HelpIcon />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
             </Grid>
-            <Grid item>
-              <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar
-                  className={classes.avatar}
-                  src="https://cdn3.iconfinder.com/data/icons/user-icon-3-1/100/user_3_Artboard_1_copy_20-512.png"
-                />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Toolbar>
-          <Grid container alignItems="center" spacing={8}>
-            <Grid item xs>
-              <Typography color="inherit" variant="h5">
-                Authentication
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Button
-                className={classes.button}
-                variant="outlined"
-                color="inherit"
-                size="small"
-              >
-                Web setup
-              </Button>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Help">
-                <IconButton color="inherit">
-                  <HelpIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
-        </Tabs>
-      </AppBar>
-    </React.Fragment>
-  )
+          </Toolbar>
+        </AppBar>
+        <AppBar
+          component="div"
+          className={classes.secondaryBar}
+          color="primary"
+          position="static"
+          elevation={0}
+        >
+          <Tabs value={0} textColor="inherit">
+            <Tab textColor="inherit" label="Sign-in" />
+            <Tab textColor="inherit" label="Project Income" />
+            <Tab textColor="inherit" label="Graphs" />
+            <Tab textColor="inherit" label="Quick Tax Info" />
+            <Tab textColor="inherit" label="About This App" />
+          </Tabs>
+        </AppBar>
+      </React.Fragment>
+    )
+  }
 }
 
 Header.propTypes = {
