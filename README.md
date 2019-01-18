@@ -1,17 +1,10 @@
-# Boilermaker
+# fortuneTeller
 
-_Good things come in pairs_
+An income tax planning app
 
-Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
+## Boilerplate Code
 
-Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
-
-## Setup
-
-To use this boilerplate, you'll need to take the following steps:
-
-* Don't fork or clone this repo! Instead, create a new, empty directory on your machine and `git init` (or create an empty repo on Github and clone it to your local machine)
-* Run the following commands:
+Remember the boilerplate code was set up as a remote using the following commands:
 
 ```
 git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
@@ -32,8 +25,8 @@ Now that you've got the code, follow these steps to get acclimated:
 
 * Update project name and description in `package.json` and `.travis.yml` files
 * `npm install`, or `yarn install` - whatever you're into
-* Create two postgres databases: `boilermaker` and `boilermaker-test` (you can substitute these with the name of your own application - just be sure to go through and change the `package.json` and `.travis.yml` to refer to the new name)
-  * By default, running `npm test` will use `boilermaker-test`, while regular development uses `boilermaker`
+* Create two postgres databases: `fortuneteller` and `fortuneTeller-test`
+  * By default, running `npm test` will use `fortuneteller-test`, while regular development uses `fortuneTeller`
 * Create a file called `secrets.js` in the project root
 
   * This file is `.gitignore`'d, and will _only_ be required in your _development_ environment

@@ -1,5 +1,5 @@
 {
-  "name": "boilermaker",
+  "name": "fortuneteller",
   "version": "1.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "engines": {
@@ -37,6 +37,8 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^3.9.0",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.15.3",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^4.1.0",
@@ -57,7 +59,8 @@
     "redux-logger": "^2.8.1",
     "redux-thunk": "^2.3.0",
     "sequelize": "^4.38.0",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.55",
