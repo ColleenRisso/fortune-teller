@@ -47,10 +47,15 @@ const currencies = [
   }
 ]
 
-export class FormIncome extends Component {
+export class FormDepreciation extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
+  }
+
+  back = event => {
+    event.preventDefault()
+    this.props.prevStep() //passed from parent component (UserForm)
   }
 
   render() {
@@ -59,43 +64,55 @@ export class FormIncome extends Component {
       <div className={classes.root}>
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                required
-                id="outlined-required"
-                label="Year-To-Date Net Income"
-                className={classes.textField}
-                value={values.netIncome}
-                onChange={handleChange('netIncome')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
-                label="Significant Income"
+                label="Current Depreciation"
                 className={classes.textField}
-                value={values.sigInc}
-                helperText="Any income earned or received that would not represent the normal course of business if annualized"
-                onChange={handleChange('sigInc')}
+                value={values.curDep}
+                helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
+                onChange={handleChange('curDep')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={3}>
               <TextField
                 id="outlined-name"
-                label="Significant Expenses"
+                label="Current Amortization"
                 className={classes.textField}
-                value={values.sigExp}
-                helperText="Any expenses paid that would not represent the normal course of business if annualized"
-                onChange={handleChange('sigExp')}
+                value={values.curAmort}
+                helperText="If your business records amortization throughout the year, any amortization reported year to date"
+                onChange={handleChange('curAmort')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6} sm={3} lg={1}>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                id="outlined-name"
+                label="Annual Depreciation"
+                className={classes.textField}
+                value={values.totalDep}
+                helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
+                onChange={handleChange('totalDep')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                id="outlined-name"
+                label="Annual Amortization"
+                className={classes.textField}
+                value={values.totalAmort}
+                helperText="Expected annualized amount, if known"
+                onChange={handleChange('totalAmort')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
               <Button
                 variant="contained"
                 color="primary"
@@ -105,6 +122,15 @@ export class FormIncome extends Component {
                 Continue
               </Button>
             </Grid>
+            <Grid item xs={12} sm={3}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.back}
+              >
+                Previous
+              </Button>
+            </Grid>
           </Grid>
         </form>
       </div>
@@ -112,8 +138,8 @@ export class FormIncome extends Component {
   }
 }
 
-FormIncome.propTypes = {
+FormDepreciation.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormIncome)
+export default withStyles(styles)(FormDepreciation)
