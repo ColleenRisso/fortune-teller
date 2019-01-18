@@ -147,9 +147,18 @@ class Navbar extends Component {
           elevation={0}
         >
           <Tabs value={0} textColor="inherit">
-            <Tab textColor="inherit" label="Sign-in" />
-            <Tab textColor="inherit" label="Create Graphs" />
-            {isLoggedIn}
+            {isLoggedIn ? (
+              <div>
+                {/* The navbar will show these links after you log in */}
+                <Tab textColor="inherit" label="Home" />
+              </div>
+            ) : (
+              <div>
+                {/* The navbar will show these links before you log in */}
+                <Tab textColor="inherit" label="Sign-in" />
+                <Tab textColor="inherit" label="Create Graphs" />
+              </div>
+            )}
           </Tabs>
         </AppBar>
       </React.Fragment>

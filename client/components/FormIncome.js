@@ -95,17 +95,15 @@ export class FormIncome extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6} sm={3} lg={1}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={this.continue}
-              >
-                Continue
-              </Button>
-            </Grid>
           </Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={this.continue}
+          >
+            Continue
+          </Button>
         </form>
       </div>
     )

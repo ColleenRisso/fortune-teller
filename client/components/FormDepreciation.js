@@ -112,6 +112,8 @@ export class FormDepreciation extends Component {
                 variant="outlined"
               />
             </Grid>
+          </Grid>
+          <Grid container spacing={24}>
             <Grid item xs={12} sm={3}>
               <Button
                 variant="contained"
