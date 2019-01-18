@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import React, {Component} from 'react'
-// import FormIncome from './FormIncome'
+import FormIncome from './FormIncome'
 // import FormDepreciation from './FormDepreciation'
 // import FormBonus from './FormBonus'
 
@@ -91,12 +91,11 @@ export class UserForm extends Component {
     switch (step) {
       case 1:
         return (
-          <h1>INCOME FORM</h1>
-          //   <FormIncome
-          //     nextStep={this.nextStep}
-          //     handleChange={this.handleChange}
-          //     values={values}
-          //   />
+          <FormIncome
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
         )
       case 2:
         return (
