@@ -122,7 +122,7 @@ class Navbar extends Component {
           <Toolbar>
             <Grid container alignItems="center" spacing={8}>
               <Grid item xs>
-                <Typography color="inherit" variant="h5">
+                <Typography color="inherit" variant="h1">
                   Fortune Teller
                 </Typography>
               </Grid>
