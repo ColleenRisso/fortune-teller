@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import {withStyles} from '@material-ui/core/styles'
-import MenuItem from '@material-ui/core/MenuItem'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import AppBar from '@material-ui/core/AppBar'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   container: {
@@ -31,6 +29,9 @@ const styles = theme => ({
     display: 'none'
   },
   root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
     flexGrow: 1
   },
   paper: {
@@ -62,9 +63,21 @@ export class FormDepreciation extends Component {
     const {values, handleChange, classes} = this.props
     return (
       <div className={classes.root}>
+        <br />
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="h5" component="h5" color="primary">
+                Depreciation & Amortization
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+        <br />
+
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
                 label="Current Depreciation"
@@ -76,7 +89,7 @@ export class FormDepreciation extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
                 label="Current Amortization"
@@ -88,7 +101,7 @@ export class FormDepreciation extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
                 label="Annual Depreciation"
@@ -100,7 +113,7 @@ export class FormDepreciation extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
                 label="Annual Amortization"
@@ -114,7 +127,16 @@ export class FormDepreciation extends Component {
             </Grid>
           </Grid>
           <Grid container spacing={24}>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={3}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.back}
+              >
+                Previous
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
               <Button
                 variant="contained"
                 color="primary"
@@ -122,15 +144,6 @@ export class FormDepreciation extends Component {
                 onClick={this.continue}
               >
                 Continue
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Button
-                variant="contained"
-                className={classes.button}
-                onClick={this.back}
-              >
-                Previous
               </Button>
             </Grid>
           </Grid>

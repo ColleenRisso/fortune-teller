@@ -61,7 +61,6 @@ export class FormIncome extends Component {
             </Paper>
           </Grid>
         </Grid>
-
         <br />
 
         <form className={classes.container} noValidate autoComplete="off">
