@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -21,6 +22,7 @@ import {UserHome} from './user-home'
 import {Login} from './auth-form'
 import UserForm from './UserForm'
 import Graph from './Graph'
+import About from './About'
 
 const lightColor = 'rgba(255, 255, 255, 0.7)'
 
@@ -50,7 +52,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tabSelected: -1
+      tabSelected: 3
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -163,6 +165,7 @@ class Navbar extends Component {
                 <Tab textColor="inherit" label="Home" />
                 <Tab textColor="inherit" label="Projection" />
                 <Tab textColor="inherit" label="Create Graphs" />
+                <Tab textColor="inherit" label="About" />
               </Tabs>
             </div>
           ) : (
@@ -176,16 +179,19 @@ class Navbar extends Component {
                 <Tab textColor="inherit" label="Sign-in" />
                 <Tab textColor="inherit" label="Projection" />
                 <Tab textColor="inherit" label="Create Graphs" />
+                <Tab textColor="inherit" label="About" />
               </Tabs>
             </div>
           )}
         </AppBar>
 
         {/* These are for everyone */}
-        {tabSelected === 0 && isLoggedIn ? <UserHome /> : <Login />}
+        {tabSelected === 0 && !isLoggedIn ? <Login /> : null}
         {tabSelected === 1 && <UserForm />}
         {tabSelected === 2 && <Graph />}
+        {tabSelected === 3 && <About />}
         {/* These are for logged in users (must contain duplicates*/}
+        {tabSelected === 0 && isLoggedIn ? <UserHome /> : null}
       </React.Fragment>
     )
   }
