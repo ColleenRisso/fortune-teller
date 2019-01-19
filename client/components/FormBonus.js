@@ -41,7 +41,7 @@ const styles = theme => ({
   }
 })
 
-export class FormDepreciation extends Component {
+export class FormBonus extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
@@ -61,7 +61,7 @@ export class FormDepreciation extends Component {
           <Grid item xs={6}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Depreciation & Amortization
+                Employee, Bonuses & Retirement
               </Typography>
             </Paper>
           </Grid>
@@ -73,11 +73,10 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Current Depreciation"
+                label="Bonuses Paid To Date"
                 className={classes.textField}
-                value={values.curDep}
-                helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
-                onChange={handleChange('curDep')}
+                value={values.curBonus}
+                onChange={handleChange('curBonus')}
                 margin="normal"
                 variant="outlined"
               />
@@ -85,11 +84,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Current Amortization"
+                label="Additional Bonuses Anticipated"
                 className={classes.textField}
-                value={values.curAmort}
-                helperText="If your business records amortization throughout the year, any amortization reported year to date"
-                onChange={handleChange('curAmort')}
+                value={values.totalBonus}
+                helperText="Enter the total bonuses anticipate to be issued for the remainder of the year"
+                onChange={handleChange('totalBonus')}
                 margin="normal"
                 variant="outlined"
               />
@@ -97,11 +96,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Depreciation"
+                label="Year-End Retirement Contributions"
                 className={classes.textField}
-                value={values.totalDep}
-                helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
-                onChange={handleChange('totalDep')}
+                value={values.retirement}
+                helperText="Expected year-end contributions to retirement plans"
+                onChange={handleChange('retirement')}
                 margin="normal"
                 variant="outlined"
               />
@@ -109,11 +108,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Amortization"
+                label="Other Anticipated Expenses"
                 className={classes.textField}
-                value={values.totalAmort}
-                helperText="Expected annualized amount, if known"
-                onChange={handleChange('totalAmort')}
+                value={values.otherEmp}
+                helperText="Other significant expenditures anticipated for the remainder of the year related to employment or retirement"
+                onChange={handleChange('otherEmp')}
                 margin="normal"
                 variant="outlined"
               />
@@ -146,8 +145,8 @@ export class FormDepreciation extends Component {
   }
 }
 
-FormDepreciation.propTypes = {
+FormBonus.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormDepreciation)
+export default withStyles(styles)(FormBonus)

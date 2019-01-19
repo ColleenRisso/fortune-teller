@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import FormIncome from './FormIncome'
 import FormDepreciation from './FormDepreciation'
-// import FormBonus from './FormBonus'
+import FormBonus from './FormBonus'
 
 export class UserForm extends Component {
   state = {
@@ -68,7 +68,9 @@ export class UserForm extends Component {
       entertainment,
       nondeductible,
       sigExp,
-      sigInc
+      sigInc,
+      retirement,
+      otherEmp
     } = this.state
     const values = {
       netIncome,
@@ -86,7 +88,9 @@ export class UserForm extends Component {
       entertainment,
       nondeductible,
       sigExp,
-      sigInc
+      sigInc,
+      retirement,
+      otherEmp
     }
     switch (step) {
       case 1:
@@ -108,13 +112,12 @@ export class UserForm extends Component {
         )
       case 3:
         return (
-          <h1>BONUS FORM</h1>
-          // <FormBonus
-          //   nextStep={this.nextStep}
-          //   prevStep={this.prevStep}
-          //   handleChange={this.handleChange}
-          //   values={values}
-          // />
+          <FormBonus
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
         )
       case 4:
         return <h1>Confirm</h1>
