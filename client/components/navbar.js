@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import AppBar from '@material-ui/core/AppBar'
 import Avatar from '@material-ui/core/Avatar'
@@ -18,6 +17,10 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core/styles'
+import {UserHome} from './user-home'
+import {Login} from './auth-form'
+import UserForm from './UserForm'
+import Graph from './Graph'
 
 const lightColor = 'rgba(255, 255, 255, 0.7)'
 
@@ -47,20 +50,22 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tabSelected: 'one'
+      tabSelected: -1
     }
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange = tabSelected => {
+  handleChange = (event, value) => {
     this.setState({
-      tabSelected: tabSelected
+      tabSelected: value
     })
-    this.props.history.push(tabSelected)
   }
 
   render() {
     const {handleClick, isLoggedIn, classes, onDrawerToggle} = this.props
+    const {tabSelected} = this.state
+    console.log('tabSelected', tabSelected)
+    console.log('******this.props', this.props)
     return (
       <React.Fragment>
         <AppBar color="primary" position="sticky" elevation={0}>
@@ -146,21 +151,41 @@ class Navbar extends Component {
           position="static"
           elevation={0}
         >
-          <Tabs value={0} textColor="inherit">
-            {isLoggedIn ? (
-              <div>
-                {/* The navbar will show these links after you log in */}
+          {this.handleChange}>
+          {isLoggedIn ? (
+            <div>
+              {/* The navbar will show these links after you log in */}
+              <Tabs
+                value={tabSelected}
+                textColor="inherit"
+                onChange={this.handleChange}
+              >
                 <Tab textColor="inherit" label="Home" />
-              </div>
-            ) : (
-              <div>
-                {/* The navbar will show these links before you log in */}
-                <Tab textColor="inherit" label="Sign-in" />
+                <Tab textColor="inherit" label="Projection" />
                 <Tab textColor="inherit" label="Create Graphs" />
-              </div>
-            )}
-          </Tabs>
+              </Tabs>
+            </div>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+              <Tabs
+                value={tabSelected}
+                textColor="inherit"
+                onChange={this.handleChange}
+              >
+                <Tab textColor="inherit" label="Sign-in" />
+                <Tab textColor="inherit" label="Projection" />
+                <Tab textColor="inherit" label="Create Graphs" />
+              </Tabs>
+            </div>
+          )}
         </AppBar>
+
+        {/* These are for everyone */}
+        {tabSelected === 0 && isLoggedIn ? <UserHome /> : <Login />}
+        {tabSelected === 1 && <UserForm />}
+        {tabSelected === 2 && <Graph />}
+        {/* These are for logged in users (must contain duplicates*/}
       </React.Fragment>
     )
   }
@@ -193,6 +218,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  classes: PropTypes.object.isRequired,
-  onDrawerToggle: PropTypes.func.isRequired
+  classes: PropTypes.object.isRequired
+  // onDrawerToggle: PropTypes.func.isRequired
 }
