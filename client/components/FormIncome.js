@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import {withStyles} from '@material-ui/core/styles'
-import MenuItem from '@material-ui/core/MenuItem'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import AppBar from '@material-ui/core/AppBar'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   container: {
@@ -31,6 +29,9 @@ const styles = theme => ({
     display: 'none'
   },
   root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
     flexGrow: 1
   },
   paper: {
@@ -39,13 +40,6 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   }
 })
-
-const currencies = [
-  {
-    value: 'USD',
-    label: '$'
-  }
-]
 
 export class FormIncome extends Component {
   continue = event => {
@@ -57,9 +51,22 @@ export class FormIncome extends Component {
     const {values, handleChange, classes} = this.props
     return (
       <div className={classes.root}>
+        <br />
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="h5" component="h5" color="primary">
+                Income Information
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+
+        <br />
+
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12}>
               <TextField
                 required
                 id="outlined-required"
@@ -71,7 +78,7 @@ export class FormIncome extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12}>
               <TextField
                 id="outlined-name"
                 label="Significant Income"
@@ -83,7 +90,7 @@ export class FormIncome extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12}>
               <TextField
                 id="outlined-name"
                 label="Significant Expenses"
