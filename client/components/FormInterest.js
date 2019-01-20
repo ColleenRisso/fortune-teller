@@ -112,8 +112,8 @@ export class FormInterest extends Component {
                 label="Total Interest Income"
                 helperText="Enter the total interest income anticipated for the year, including the amounts already received"
                 className={classes.textField}
-                value={values.totalIntExp}
-                onChange={handleChange('totalIntExp')}
+                value={values.totalIntInc}
+                onChange={handleChange('totalIntInc')}
                 margin="normal"
                 variant="outlined"
               />

@@ -104,6 +104,7 @@ export class FormTax extends Component {
 
         <div className={classes.demo}>
           <List>
+            {/* Income Form */}
             <ListItem>
               <ListItemText primary="Net Income" secondary={netIncome} />
             </ListItem>
@@ -114,6 +115,144 @@ export class FormTax extends Component {
 
             <ListItem>
               <ListItemText primary="Significant Expenses" secondary={sigExp} />
+            </ListItem>
+
+            {/* Depreciation Form */}
+
+            <ListItem>
+              <ListItemText primary="Current Depreciation" secondary={curDep} />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Current Amortization"
+                secondary={curAmort}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total Anticipated Depreciation"
+                secondary={totalDep}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total Anticipated Amortization"
+                secondary={totalAmort}
+              />
+            </ListItem>
+
+            {/* Employee, Bonus & Retirement Form */}
+
+            <ListItem>
+              <ListItemText primary="Bonus Paid To Date" secondary={curBonus} />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Additional Bonuses Anticipated"
+                secondary={totalBonus}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Year-End Retirement Contributions"
+                secondary={retirement}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Other Anticipated Expenses"
+                secondary={otherEmp}
+              />
+            </ListItem>
+
+            {/* Interest Form */}
+
+            <ListItem>
+              <ListItemText
+                primary="Interest Expense Paid"
+                secondary={curIntExp}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total Interest Expense"
+                secondary={totalIntExp}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Interest Income Received"
+                secondary={curIntInc}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total Interest Income"
+                secondary={totalIntInc}
+              />
+            </ListItem>
+
+            {/* Federal & State Taxes Form */}
+
+            <ListItem>
+              <ListItemText
+                primary="Federal Taxes Paid"
+                secondary={curFedTaxes}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="State Taxes Expense"
+                secondary={curStateTaxes}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total Federal Tax Liability"
+                secondary={totalFedTaxes}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Total State Tax Liability"
+                secondary={totalStateTaxes}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Penalties and Interest"
+                secondary={penalty}
+              />
+            </ListItem>
+
+            {/* Nondeductible & Limited Expenses Form */}
+
+            <ListItem>
+              <ListItemText primary="Meals" secondary={meals} />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText primary="Entertainment" secondary={entertainment} />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Other Nondeductible Expenses"
+                secondary={nondeductible}
+              />
             </ListItem>
           </List>
         </div>
