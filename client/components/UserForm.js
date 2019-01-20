@@ -8,6 +8,7 @@ import FormInterest from './FormInterest'
 import FormTax from './FormTax'
 import FormNDE from './FormNDE'
 import Confirm from './Confirm'
+import Success from './Success'
 
 export class UserForm extends Component {
   state = {
@@ -175,7 +176,7 @@ export class UserForm extends Component {
           />
         )
       case 8:
-        return <h1>Success</h1>
+        return <Success prevStep={this.prevStep} values={values} />
     }
   }
 }
