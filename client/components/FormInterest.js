@@ -41,7 +41,7 @@ const styles = theme => ({
   }
 })
 
-export class FormDepreciation extends Component {
+export class FormInterest extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
@@ -61,7 +61,7 @@ export class FormDepreciation extends Component {
           <Grid item xs={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Depreciation & Amortization
+                Interest
               </Typography>
             </Paper>
           </Grid>
@@ -73,11 +73,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Current Depreciation"
+                label="Interest Expense Paid"
+                helperText="Enter the interest expense year-to-date"
                 className={classes.textField}
-                value={values.curDep}
-                helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
-                onChange={handleChange('curDep')}
+                value={values.curIntExp}
+                onChange={handleChange('curIntExp')}
                 margin="normal"
                 variant="outlined"
               />
@@ -85,11 +85,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Current Amortization"
+                label="Total Interest Expense"
+                helperText="Enter the total interest expense due for the year, including the amounts already paid"
                 className={classes.textField}
-                value={values.curAmort}
-                helperText="If your business records amortization throughout the year, any amortization reported year to date"
-                onChange={handleChange('curAmort')}
+                value={values.totalIntExp}
+                onChange={handleChange('totalIntExp')}
                 margin="normal"
                 variant="outlined"
               />
@@ -97,11 +97,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Depreciation"
+                label="Interest Income Received"
+                helperText="Enter the interest income year-to-date"
                 className={classes.textField}
-                value={values.totalDep}
-                helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
-                onChange={handleChange('totalDep')}
+                value={values.curIntInc}
+                onChange={handleChange('curIntInc')}
                 margin="normal"
                 variant="outlined"
               />
@@ -109,11 +109,11 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Amortization"
+                label="Total Interest Income"
+                helperText="Enter the total interest income anticipated for the year, including the amounts already received"
                 className={classes.textField}
-                value={values.totalAmort}
-                helperText="Expected annualized amount, if known"
-                onChange={handleChange('totalAmort')}
+                value={values.totalIntExp}
+                onChange={handleChange('totalIntExp')}
                 margin="normal"
                 variant="outlined"
               />
@@ -146,8 +146,8 @@ export class FormDepreciation extends Component {
   }
 }
 
-FormDepreciation.propTypes = {
+FormInterest.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormDepreciation)
+export default withStyles(styles)(FormInterest)

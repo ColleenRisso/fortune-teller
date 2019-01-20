@@ -1,8 +1,12 @@
+/* eslint-disable complexity */
 /* eslint-disable default-case */
 import React, {Component} from 'react'
 import FormIncome from './FormIncome'
 import FormDepreciation from './FormDepreciation'
 import FormBonus from './FormBonus'
+import FormInterest from './FormInterest'
+import FormTax from './FormTax'
+import FormNDE from './FormNDE'
 
 export class UserForm extends Component {
   state = {
@@ -20,11 +24,16 @@ export class UserForm extends Component {
     otherEmp: 0, //other expenses anticipated for employees/employmeny purposes
     curIntExp: 0, //current interest expense year to date
     totalIntExp: 0, //total interest expense anticipated for the year
+    curIntInc: 0, //current interest income year to date
+    totalIntInc: 0, //total interest income anticipated for the year
     curStateTaxes: 0, //current taxes paid for state purposes, year to date
     totalStateTaxes: 0, //total taxes anticipated for the year
+    curFedTaxes: 0, //current taxes paid for state purposes, year to date
+    totalFedTaxes: 0, //total taxes anticipated for the year
     meals: 0, //meals, subject to 50% limitation, must enter at 100%.
     entertainment: 0, //subject to 100% limitation, must enter at 100%
-    nondeductible: 0 //anything that is a fine, penalty, etc. Enter at 100%.
+    nondeductible: 0, //anything that is a fine, penalty, etc. Enter at 100%.
+    penalty: 0 //specifically for taxes. Includes interest
   }
 
   // Proceed to next step
@@ -62,11 +71,16 @@ export class UserForm extends Component {
       totalAmort,
       curIntExp,
       totalIntExp,
+      curIntInc,
+      totalIntInc,
       curStateTaxes,
       totalStateTaxes,
+      curFedTaxes,
+      totalFedTaxes,
       meals,
       entertainment,
       nondeductible,
+      penalty,
       sigExp,
       sigInc,
       retirement,
@@ -82,11 +96,16 @@ export class UserForm extends Component {
       totalAmort,
       curIntExp,
       totalIntExp,
+      curIntInc,
+      totalIntInc,
       curStateTaxes,
       totalStateTaxes,
+      curFedTaxes,
+      totalFedTaxes,
       meals,
       entertainment,
       nondeductible,
+      penalty,
       sigExp,
       sigInc,
       retirement,
@@ -120,12 +139,35 @@ export class UserForm extends Component {
           />
         )
       case 4:
-        return <h1>Confirm</h1>
+        return (
+          <FormInterest
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        )
       case 5:
-        return <h1>Success</h1>
+        return (
+          <FormTax
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        )
       case 6:
-        return <h1>Confirm</h1>
+        return (
+          <FormNDE
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        )
       case 7:
+        return <h1>Confirm</h1>
+      case 8:
         return <h1>Success</h1>
     }
   }
