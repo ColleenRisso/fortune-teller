@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import red from '@material-ui/core/colors/red'
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 
 const styles = theme => ({
   card: {
@@ -31,6 +32,11 @@ const styles = theme => ({
   },
   avatar: {
     backgroundColor: red[500]
+  },
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
   }
 })
 
@@ -45,26 +51,41 @@ export class About extends Component {
     const {classes} = this.props
     return (
       <div>
-        <h1>What this app is about</h1>
-        <Grid container spacing={12}>
-          <Grid item sm={12} md={4}>
+        <br />
+
+        <Paper className={classes.root} elevation={1}>
+          <Typography variant="h3" component="h3">
+            We're bridging the gap in business income planning!
+          </Typography>
+          <br />
+          <Typography variant="h6" component="h6">
+            And making it easier to forcast your income before talking to your
+            accountant about tax minimization strategies!
+          </Typography>
+        </Paper>
+
+        <br />
+
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
-                image="/img/analysis.jpeg"
+                image="/img/computer.jpeg"
                 title="Analysis"
               />
+
               <CardContent>
                 <Typography component="p">
-                  This impressive paella is a perfect party dish and a fun meal
-                  to cook together with your guests. Add 1 cup of frozen peas
-                  along with the mussels, if you like.
+                  Our goal is to make your data easy to visualize, so you can
+                  easily understand what your numbers are indicating and make
+                  decisions with your accounant's assitance.
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
@@ -73,15 +94,15 @@ export class About extends Component {
               />
               <CardContent>
                 <Typography component="p">
-                  This impressive paella is a perfect party dish and a fun meal
-                  to cook together with your guests. Add 1 cup of frozen peas
-                  along with the mussels, if you like.
+                  Our projection process is broken down into simple steps, with
+                  helpful hints along the way. All you need is your Balance
+                  Sheet and Income Statement.
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
@@ -90,12 +111,53 @@ export class About extends Component {
               />
               <CardContent>
                 <Typography component="p">
-                  This impressive paella is a perfect party dish and a fun meal
-                  to cook together with your guests. Add 1 cup of frozen peas
-                  along with the mussels, if you like.
+                  Because our projections export to excel, it's easy to save
+                  your projections, and alter them to fit any specific needs
+                  your business may have.
                 </Typography>
               </CardContent>
             </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.media}
+                image="/img/analysis.jpeg"
+                title="Analysis"
+              />
+              <CardContent>
+                <Typography component="p">
+                  Communicate more effectively with your accountant, having a
+                  better idea of where you projected taxable net income is
+                  likely to be before their tax saving strategies.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <br />
+        <br />
+
+        <Grid container spacing={24}>
+          <Grid item xs={8}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="h5" component="h5" color="secondary">
+                A notice regarding tax information
+              </Typography>
+              <Typography
+                component="p"
+                color="secondary"
+                fontWeight="fontWeightMedium"
+              >
+                Due to the nature and complexity of tax laws, please consult
+                with your accountant before making a business decisions. This
+                app is in no way intended to, nor capable of, replacing the
+                in-depth knowledge an accountant has of your business and the
+                current tax laws.
+              </Typography>
+            </Paper>
           </Grid>
         </Grid>
       </div>

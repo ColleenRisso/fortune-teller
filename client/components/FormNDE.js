@@ -41,7 +41,7 @@ const styles = theme => ({
   }
 })
 
-export class FormDepreciation extends Component {
+export class FormTax extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
@@ -61,7 +61,22 @@ export class FormDepreciation extends Component {
           <Grid item xs={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Depreciation & Amortization
+                Federal & State Taxes
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={8}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="h6" component="h6" color="secondary">
+                Some expenses are limited for tax purposes:
+              </Typography>
+              <Typography fontSize={12} color="secondary">
+                For the purposes of this projection, please enter all expenses
+                at 100% and limitations will be calculated accordingly based on
+                general assumptions. Consult your accountant for specific
+                analysis.
               </Typography>
             </Paper>
           </Grid>
@@ -70,57 +85,46 @@ export class FormDepreciation extends Component {
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
-                label="Current Depreciation"
+                label="Meals"
+                helperText="Assumes the meals have a business purposes. Do not include food or drink provided to all employees such as Christmas parties or office snacks"
                 className={classes.textField}
-                value={values.curDep}
-                helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
-                onChange={handleChange('curDep')}
+                value={values.meals}
+                onChange={handleChange('meals')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
-                label="Current Amortization"
+                label="Entertainment"
                 className={classes.textField}
-                value={values.curAmort}
-                helperText="If your business records amortization throughout the year, any amortization reported year to date"
-                onChange={handleChange('curAmort')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-name"
-                label="Annual Depreciation"
-                className={classes.textField}
-                value={values.totalDep}
-                helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
-                onChange={handleChange('totalDep')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-name"
-                label="Annual Amortization"
-                className={classes.textField}
-                value={values.totalAmort}
-                helperText="Expected annualized amount, if known"
-                onChange={handleChange('totalAmort')}
+                value={values.entertainment}
+                onChange={handleChange('entertainment')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
           </Grid>
           <Grid container spacing={24}>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="outlined-name"
+                label="Other Nondeductible Expenses"
+                helperText="Expenses such as parking tickets, gifts, life insurance, disability insurance, political contributions and country club memberships"
+                className={classes.textField}
+                value={values.nondeductible}
+                onChange={handleChange('nondeductible')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={24}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 className={classes.button}
@@ -129,7 +133,7 @@ export class FormDepreciation extends Component {
                 Previous
               </Button>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 color="primary"
@@ -146,8 +150,8 @@ export class FormDepreciation extends Component {
   }
 }
 
-FormDepreciation.propTypes = {
+FormTax.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormDepreciation)
+export default withStyles(styles)(FormTax)

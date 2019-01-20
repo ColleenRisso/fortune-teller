@@ -41,10 +41,15 @@ const styles = theme => ({
   }
 })
 
-export class FormIncome extends Component {
+export class FormBonus extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
+  }
+
+  back = event => {
+    event.preventDefault()
+    this.props.prevStep() //passed from parent component (UserForm)
   }
 
   render() {
@@ -56,7 +61,7 @@ export class FormIncome extends Component {
           <Grid item xs={6}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Income Information
+                Employee, Bonuses & Retirement
               </Typography>
             </Paper>
           </Grid>
@@ -65,59 +70,83 @@ export class FormIncome extends Component {
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
               <TextField
-                required
-                id="outlined-required"
-                label="Year-To-Date Net Income"
+                id="outlined-name"
+                label="Bonuses Paid To Date"
                 className={classes.textField}
-                value={values.netIncome}
-                onChange={handleChange('netIncome')}
+                value={values.curBonus}
+                onChange={handleChange('curBonus')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Significant Income"
+                label="Additional Bonuses Anticipated"
                 className={classes.textField}
-                value={values.sigInc}
-                helperText="Any income earned or received that would not represent the normal course of business if annualized"
-                onChange={handleChange('sigInc')}
+                value={values.totalBonus}
+                helperText="Enter the total bonuses anticipate to be issued for the remainder of the year"
+                onChange={handleChange('totalBonus')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Significant Expenses"
+                label="Year-End Retirement Contributions"
                 className={classes.textField}
-                value={values.sigExp}
-                helperText="Any expenses paid that would not represent the normal course of business if annualized"
-                onChange={handleChange('sigExp')}
+                value={values.retirement}
+                helperText="Expected year-end contributions to retirement plans"
+                onChange={handleChange('retirement')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                id="outlined-name"
+                label="Other Anticipated Expenses"
+                className={classes.textField}
+                value={values.otherEmp}
+                helperText="Other significant expenditures anticipated for the remainder of the year related to employment or retirement"
+                onChange={handleChange('otherEmp')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
           </Grid>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            onClick={this.continue}
-          >
-            Continue
-          </Button>
+          <Grid container spacing={24}>
+            <Grid item xs={3}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.back}
+              >
+                Previous
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.continue}
+              >
+                Continue
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </div>
     )
   }
 }
 
-FormIncome.propTypes = {
+FormBonus.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormIncome)
+export default withStyles(styles)(FormBonus)

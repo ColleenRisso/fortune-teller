@@ -41,7 +41,7 @@ const styles = theme => ({
   }
 })
 
-export class FormDepreciation extends Component {
+export class FormTax extends Component {
   continue = event => {
     event.preventDefault()
     this.props.nextStep() //passed from parent component (UserForm)
@@ -61,7 +61,18 @@ export class FormDepreciation extends Component {
           <Grid item xs={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Depreciation & Amortization
+                Federal & State Taxes
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="h6" component="h6" color="secondary">
+                State & Federal Tax Liabilities:
+              </Typography>
+              <Typography fontSize={12} color="secondary">
+                Recommendations may have been made with your most recently filed
+                tax returns. Ask your accountant if you are not certain.
               </Typography>
             </Paper>
           </Grid>
@@ -70,57 +81,71 @@ export class FormDepreciation extends Component {
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-name"
-                label="Current Depreciation"
+                label="State Taxes Paid"
+                helperText="Include and LLC fees, exclude any late interest and penalties"
                 className={classes.textField}
-                value={values.curDep}
-                helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
-                onChange={handleChange('curDep')}
+                value={values.curStateTaxes}
+                onChange={handleChange('curStateTaxes')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-name"
-                label="Current Amortization"
+                label="Federal Taxes Paid"
+                helperText="Exclude any late interest and penalties"
                 className={classes.textField}
-                value={values.curAmort}
-                helperText="If your business records amortization throughout the year, any amortization reported year to date"
-                onChange={handleChange('curAmort')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-name"
-                label="Annual Depreciation"
-                className={classes.textField}
-                value={values.totalDep}
-                helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
-                onChange={handleChange('totalDep')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-name"
-                label="Annual Amortization"
-                className={classes.textField}
-                value={values.totalAmort}
-                helperText="Expected annualized amount, if known"
-                onChange={handleChange('totalAmort')}
+                value={values.curFedTaxes}
+                onChange={handleChange('curFedTaxes')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
           </Grid>
           <Grid container spacing={24}>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="outlined-name"
+                label="Total State Taxes Liability"
+                helperText="Total state tax liability for the current year, including the LLC fees. Do not includes any late fees or penalties"
+                className={classes.textField}
+                value={values.totalStateTaxes}
+                onChange={handleChange('totalStateTaxes')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="outlined-name"
+                label="Total Federal Taxes Liability"
+                helperText="Total state tax liability for the current year. Do not includes any late fees or penalties"
+                className={classes.textField}
+                value={values.totalFedTaxes}
+                onChange={handleChange('totalFedTaxes')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-name"
+                label="Penalties and Interest"
+                helperText="Only include penalties and interest paid to date for tax returns"
+                className={classes.textField}
+                value={values.penalty}
+                onChange={handleChange('penalty')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={24}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 className={classes.button}
@@ -129,7 +154,7 @@ export class FormDepreciation extends Component {
                 Previous
               </Button>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 color="primary"
@@ -146,8 +171,8 @@ export class FormDepreciation extends Component {
   }
 }
 
-FormDepreciation.propTypes = {
+FormTax.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(FormDepreciation)
+export default withStyles(styles)(FormTax)
