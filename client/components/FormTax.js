@@ -84,18 +84,6 @@ export class FormTax extends Component {
             <Grid item xs={6}>
               <TextField
                 id="outlined-name"
-                label="State Taxes Paid"
-                helperText="Include and LLC fees, exclude any late interest and penalties"
-                className={classes.textField}
-                value={values.curStateTaxes}
-                onChange={handleChange('curStateTaxes')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="outlined-name"
                 label="Federal Taxes Paid"
                 helperText="Exclude any late interest and penalties"
                 className={classes.textField}
@@ -105,16 +93,28 @@ export class FormTax extends Component {
                 variant="outlined"
               />
             </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="outlined-name"
+                label="State Taxes Paid"
+                helperText="Include and LLC fees, exclude any late interest and penalties"
+                className={classes.textField}
+                value={values.curStateTaxes}
+                onChange={handleChange('curStateTaxes')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
           </Grid>
           <Grid container spacing={24}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
-                label="Total State Taxes Liability"
-                helperText="Total state tax liability for the current year, including the LLC fees. Do not includes any late fees or penalties"
+                label="Total Federal Tax Liability"
+                helperText="Total federal tax liability for the current year. Do not includes any late fees or penalties"
                 className={classes.textField}
-                value={values.totalStateTaxes}
-                onChange={handleChange('totalStateTaxes')}
+                value={values.totalFedTaxes}
+                onChange={handleChange('totalFedTaxes')}
                 margin="normal"
                 variant="outlined"
               />
@@ -122,11 +122,11 @@ export class FormTax extends Component {
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
-                label="Total Federal Taxes Liability"
-                helperText="Total state tax liability for the current year. Do not includes any late fees or penalties"
+                label="Total State Tax Liability"
+                helperText="Total state tax liability for the current year, including the LLC fees. Do not includes any late fees or penalties"
                 className={classes.textField}
-                value={values.totalFedTaxes}
-                onChange={handleChange('totalFedTaxes')}
+                value={values.totalStateTaxes}
+                onChange={handleChange('totalStateTaxes')}
                 margin="normal"
                 variant="outlined"
               />

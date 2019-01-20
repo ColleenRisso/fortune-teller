@@ -97,7 +97,7 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Depreciation"
+                label="Total Anticipated Depreciation"
                 className={classes.textField}
                 value={values.totalDep}
                 helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
@@ -109,7 +109,7 @@ export class FormDepreciation extends Component {
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-name"
-                label="Annual Amortization"
+                label="Total Anticipated Amortization"
                 className={classes.textField}
                 value={values.totalAmort}
                 helperText="Expected annualized amount, if known"
