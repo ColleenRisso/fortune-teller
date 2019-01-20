@@ -61,7 +61,7 @@ export class FormTax extends Component {
           <Grid item xs={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
-                Federal & State Taxes
+                Nondeductible and Limited Expenses
               </Typography>
             </Paper>
           </Grid>
