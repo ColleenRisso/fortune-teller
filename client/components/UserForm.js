@@ -7,6 +7,7 @@ import FormBonus from './FormBonus'
 import FormInterest from './FormInterest'
 import FormTax from './FormTax'
 import FormNDE from './FormNDE'
+import Confirm from './Confirm'
 
 export class UserForm extends Component {
   state = {
@@ -166,7 +167,13 @@ export class UserForm extends Component {
           />
         )
       case 7:
-        return <h1>Confirm</h1>
+        return (
+          <Confirm
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            values={values}
+          />
+        )
       case 8:
         return <h1>Success</h1>
     }
