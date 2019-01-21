@@ -5,17 +5,28 @@ import {
   createProjectThunk,
   updateProjectThunk
 } from '../store/project'
+import Axios from 'axios'
 
 export class Projection extends Component {
+  constructor() {
+    super()
+    this.state = {
+      projectionData: {}
+    }
+  }
+
   componentDidMount() {
-    // this.props.getProject(this.props.user.id)
+    const project = this.props.getProject(this.props.user.id)
+    this.setState({
+      projectionData: project
+    })
   }
 
   render() {
     console.log('********this.props', this.props)
     return (
       <div>
-        <h1>Your Projection</h1>
+        <h1>Your Projection Speaking!</h1>
       </div>
     )
   }
@@ -23,7 +34,7 @@ export class Projection extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    user: state.user.email,
     project: state.project
   }
 }

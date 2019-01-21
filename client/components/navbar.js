@@ -67,8 +67,6 @@ class Navbar extends Component {
   render() {
     const {handleClick, isLoggedIn, classes, onDrawerToggle} = this.props
     const {tabSelected} = this.state
-    console.log('tabSelected', tabSelected)
-    console.log('******this.props', this.props)
     return (
       <React.Fragment>
         <AppBar color="primary" position="sticky" elevation={0}>
@@ -230,14 +228,6 @@ class Navbar extends Component {
             </div>
           )}
         </AppBar>
-
-        {/* These are for everyone */}
-        {/* {tabSelected === 0 && !isLoggedIn ? <Login /> : null}
-        {tabSelected === 1 && <UserForm />}
-        {tabSelected === 2 && <Graph />}
-        {tabSelected === 3 && <About />} */}
-        {/* These are for logged in users (must contain duplicates*/}
-        {/* {tabSelected === 0 && isLoggedIn ? <UserHome /> : null} */}
       </React.Fragment>
     )
   }

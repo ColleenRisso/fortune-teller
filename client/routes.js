@@ -29,14 +29,13 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/projection" component={UserForm} />
-        <Route exact path="/my-projection" component={Projection} />
         <Route exact path="/graph" component={Graph} />
 
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-            <Route path="/projection" component={Projection} />
+            <Route exact path="/home" component={UserHome} />
+            <Route exact path="/home/my-projection" component={Projection} />
           </Switch>
         )}
       </Switch>
