@@ -94,6 +94,16 @@ const createApp = () => {
   })
 }
 
+app.use((req, res, next) => {
+  if (req.user) {
+    console.log('***-----> req.session:', req.session)
+    console.log('***-----> req.session.id:', req.session.id)
+    next()
+  } else {
+    next()
+  }
+})
+
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>

@@ -53,7 +53,8 @@ export class About extends Component {
       <div>
         <br />
 
-        <Paper className={classes.root} elevation={1}>
+        {/* A FIX SHOULD CHANGING to className={styles("").root */}
+        <Paper className={styles('').root} elevation={1}>
           <Typography variant="h3" component="h3">
             We're bridging the gap in business income planning!
           </Typography>
