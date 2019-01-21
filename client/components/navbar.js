@@ -23,6 +23,7 @@ import {Login} from './auth-form'
 import UserForm from './UserForm'
 import Graph from './Graph'
 import About from './About'
+import {Link} from 'react-router-dom'
 
 const lightColor = 'rgba(255, 255, 255, 0.7)'
 
@@ -162,10 +163,34 @@ class Navbar extends Component {
                 textColor="inherit"
                 onChange={this.handleChange}
               >
-                <Tab textColor="inherit" label="Home" />
-                <Tab textColor="inherit" label="Projection" />
-                <Tab textColor="inherit" label="Create Graphs" />
-                <Tab textColor="inherit" label="About" />
+                <Tab
+                  key="Home"
+                  textColor="inherit"
+                  label="Home"
+                  component={Link}
+                  to="/home"
+                />
+                <Tab
+                  key="Projection"
+                  textColor="inherit"
+                  label="Projection"
+                  component={Link}
+                  to="/projection"
+                />
+                <Tab
+                  key="Creat Graphs"
+                  textColor="inherit"
+                  label="Create Graphs"
+                  component={Link}
+                  to="/graph"
+                />
+                <Tab
+                  key="About"
+                  textColor="inherit"
+                  label="About"
+                  component={Link}
+                  to="/about"
+                />
               </Tabs>
             </div>
           ) : (
@@ -176,22 +201,43 @@ class Navbar extends Component {
                 textColor="inherit"
                 onChange={this.handleChange}
               >
-                <Tab textColor="inherit" label="Sign-in" />
-                <Tab textColor="inherit" label="Projection" />
-                <Tab textColor="inherit" label="Create Graphs" />
-                <Tab textColor="inherit" label="About" />
+                <Tab
+                  key="Sign-in"
+                  textColor="inherit"
+                  label="Sign-in"
+                  component={Link}
+                  to="/login"
+                />
+                <Tab
+                  textColor="inherit"
+                  label="Projection"
+                  component={Link}
+                  to="/projection"
+                />
+                <Tab
+                  textColor="inherit"
+                  label="Create Graphs"
+                  component={Link}
+                  to="/graph"
+                />
+                <Tab
+                  textColor="inherit"
+                  label="About"
+                  component={Link}
+                  to="/about"
+                />
               </Tabs>
             </div>
           )}
         </AppBar>
 
         {/* These are for everyone */}
-        {tabSelected === 0 && !isLoggedIn ? <Login /> : null}
+        {/* {tabSelected === 0 && !isLoggedIn ? <Login /> : null}
         {tabSelected === 1 && <UserForm />}
         {tabSelected === 2 && <Graph />}
-        {tabSelected === 3 && <About />}
+        {tabSelected === 3 && <About />} */}
         {/* These are for logged in users (must contain duplicates*/}
-        {tabSelected === 0 && isLoggedIn ? <UserHome /> : null}
+        {/* {tabSelected === 0 && isLoggedIn ? <UserHome /> : null} */}
       </React.Fragment>
     )
   }

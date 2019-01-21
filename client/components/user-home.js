@@ -1,18 +1,23 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-/**
- * COMPONENT
- */
-export const UserHome = props => {
-  const {email} = props
+export class UserHome extends Component {
+  render() {
+    const {email} = this.props
+    console.log('*****', email)
+    console.log('PROPS', this.props)
+    return (
+      <div>
+        <h3>Welcome, {email}</h3>
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+        <Link to="my-projection">
+          <button type="button">My Projection</button>
+        </Link>
+      </div>
+    )
+  }
 }
 
 /**

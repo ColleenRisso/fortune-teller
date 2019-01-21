@@ -15,7 +15,10 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
+const getUser = user => {
+  console.log('ACTION getUser IS HAPPENING')
+  return {type: GET_USER, user}
+}
 const removeUser = () => ({type: REMOVE_USER})
 
 /**
