@@ -4,36 +4,52 @@ module.exports = router
 
 //These routes are mounted on /api/project
 
-//this route creates a projection for specific users.
-router.post('/:userId', async (req, res, next) => {
-  console.log('req.user.id', req.user.id)
-  console.log('req.params.userId', req.params.userId)
-  if (req.user.id == req.params.userId) {
-    console.log("I'm in!")
+/*
+**Currently inaccessable as no admin user set up
+
+router.get('/', async (request, response, next) => {
+	try {
+		response.json(await Project.findAll())
+	} catch (error) {
+		next(error)
+	}
+})
+*/
+
+//allows a user to access their projection
+router.get('/:userId', async (request, response, next) => {
+  if (request.user.id == request.params.userId) {
     try {
-      res.json(await Project.create({where: req.body}))
+      response.json(await Project.findOne({where: {userId: request.user.id}}))
     } catch (error) {
       next(error)
     }
   } else {
-    console.log("I can't get in!")
+    response.json("you do not have permission to access this user's projection")
   }
 })
 
-//this route is only accessible to admin users. This route allows admin users to update items on the database and returns a 200 response as updating returns a promsie for the number of rows updated and an array of the updated items if multiple items were updated.
-router.put('/:itemId', async (req, res, next) => {
-  try {
-    const [numAffected, affected] = await Item.update(req.body, {
-      where: {id: req.params.itemId},
-      returning: true,
-      plain: true
-    })
-    if (numAffected && affected) {
-      res.sendStatus(200)
-    } else {
-      res.sendStatus(400)
+//allows a user to create a projection
+router.post('/:userId', async (request, response, next) => {
+  if (request.user.id == request.params.userId) {
+    try {
+      response.json(await Project.create(request.body))
+    } catch (error) {
+      next(error)
     }
-  } catch (error) {
-    next(error)
+  } else {
+    console.log('an unauthorized user attempted a to create a projection')
+  }
+})
+
+//allows a user to update their projection
+router.put('/:userId', async (request, response, next) => {
+  if (request.user.id == request.params.userId) {
+    Project.findOne({where: {userId: request.user.id}})
+      .then(project => project.update(request.body))
+      .then(project => response.json(project))
+      .catch(next)
+  } else {
+    console.log('an unauthorized user attempted a to update a projection')
   }
 })
