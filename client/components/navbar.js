@@ -175,7 +175,7 @@ class Navbar extends Component {
                   textColor="inherit"
                   label="About"
                   component={Link}
-                  to="/about"
+                  to="/"
                 />
               </Tabs>
             </div>
@@ -211,7 +211,7 @@ class Navbar extends Component {
                   textColor="inherit"
                   label="About"
                   component={Link}
-                  to="/about"
+                  to="/"
                 />
               </Tabs>
             </div>
