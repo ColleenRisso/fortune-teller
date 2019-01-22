@@ -53,8 +53,7 @@ export class About extends Component {
       <div>
         <br />
 
-        {/* A FIX SHOULD CHANGING to className={styles("").root */}
-        <Paper className={styles('').root} elevation={1}>
+        <Paper elevation={1}>
           <Typography variant="h3" component="h3">
             We're bridging the gap in business income planning!
           </Typography>
@@ -64,18 +63,11 @@ export class About extends Component {
             accountant about tax minimization strategies!
           </Typography>
         </Paper>
-
         <br />
-
         <Grid container spacing={24}>
           <Grid item xs={12} sm={6} md={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/img/computer.jpeg"
-                title="Analysis"
-              />
-
+            <Card>
+              <CardMedia image="/img/computer.jpeg" title="Analysis" />
               <CardContent>
                 <Typography component="p">
                   Our goal is to make your data easy to visualize, so you can
@@ -87,12 +79,8 @@ export class About extends Component {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/img/calculator.jpeg"
-                title="Calculator"
-              />
+            <Card>
+              <CardMedia image="/img/calculator.jpeg" title="Calculator" />
               <CardContent>
                 <Typography component="p">
                   Our projection process is broken down into simple steps, with
@@ -104,12 +92,8 @@ export class About extends Component {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/img/projection.jpeg"
-                title="Projection"
-              />
+            <Card>
+              <CardMedia image="/img/projection.jpeg" title="Projection" />
               <CardContent>
                 <Typography component="p">
                   Because our projections export to excel, it's easy to save
@@ -119,14 +103,9 @@ export class About extends Component {
               </CardContent>
             </Card>
           </Grid>
-
           <Grid item xs={12} sm={6} md={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image="/img/analysis.jpeg"
-                title="Analysis"
-              />
+            <Card>
+              <CardMedia image="/img/analysis.jpeg" title="Analysis" />
               <CardContent>
                 <Typography component="p">
                   Communicate more effectively with your accountant, having a
@@ -137,13 +116,11 @@ export class About extends Component {
             </Card>
           </Grid>
         </Grid>
-
         <br />
         <br />
-
         <Grid container spacing={24}>
           <Grid item xs={8}>
-            <Paper className={classes.root} elevation={1}>
+            <Paper elevation={1}>
               <Typography variant="h5" component="h5" color="secondary">
                 A notice regarding tax information
               </Typography>
@@ -165,9 +142,7 @@ export class About extends Component {
     )
   }
 }
-
 About.propTypes = {
-  classes: PropTypes.object.isRequired
+  // classes: PropTypes.object.isRequired
 }
-
 export default withStyles(styles)(About)

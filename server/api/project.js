@@ -44,10 +44,7 @@ router.post('/:userId', async (request, response, next) => {
 
 //allows a user to update their projection
 router.put('/:userId', async (request, response, next) => {
-  console.log('****** PUT REQUEST BODY', request.body)
-  console.log('******CHECK', request.user.id == request.params.userId)
   if (request.user.id == request.params.userId) {
-    console.log('I should be updated')
     Project.findOne({where: {userId: request.user.id}})
       .then(project => project.update(request.body))
       .then(project => response.json(project))
