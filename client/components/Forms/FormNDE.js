@@ -58,21 +58,29 @@ export class FormTax extends Component {
       <div className={classes.root}>
         <br />
         <Grid container spacing={24}>
-          <Grid item xs={8}>
+          <Grid item xs={12} sm={6} md={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
                 Nondeductible and Limited Expenses
               </Typography>
             </Paper>
           </Grid>
-        </Grid>
-        <Grid container spacing={24}>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="subtitle1" component="h6" color="secondary">
+                Enter information to the nearest dollar amount, as positive
+                numbers.
+              </Typography>
+            </Paper>
+          </Grid>
+
           <Grid item xs={12} sm={8}>
             <Paper className={classes.root} elevation={1}>
-              <Typography variant="h6" component="h6" color="secondary">
+              <Typography variant="subtitle1" component="h6" color="secondary">
                 Some expenses are limited for tax purposes:
               </Typography>
-              <Typography fontSize={12} color="secondary">
+              <Typography variant="subtitle2" component="h6" color="secondary">
                 For the purposes of this projection, please enter all expenses
                 at 100% and limitations will be calculated accordingly based on
                 general assumptions. Consult your accountant for specific
@@ -81,7 +89,6 @@ export class FormTax extends Component {
             </Paper>
           </Grid>
         </Grid>
-        <br />
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>

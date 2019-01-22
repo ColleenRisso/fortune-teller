@@ -53,10 +53,19 @@ export class FormIncome extends Component {
       <div className={classes.root}>
         <br />
         <Grid container spacing={24}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6} md={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
                 Income Information
+              </Typography>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="subtitle1" component="h6" color="secondary">
+                Enter information to the nearest dollar amount, as positive
+                numbers.
               </Typography>
             </Paper>
           </Grid>
