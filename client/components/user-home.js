@@ -8,6 +8,7 @@ import {
 } from '../store/project'
 import {Link} from 'react-router-dom'
 import {Projection} from './Projection'
+import {addDecimal, addComma} from '../../script/util'
 
 export class UserHome extends Component {
   constructor() {
@@ -35,26 +36,300 @@ export class UserHome extends Component {
   }
 
   render() {
-    console.log('********this.props', this.props)
-    console.log('*****this.state', this.state)
     const {email, id, get, create, update, project} = this.props
+    const {
+      currentMonth,
+      netIncome,
+      curBonus,
+      totalBonus,
+      curDep,
+      curAmort,
+      totalDep,
+      totalAmort,
+      curIntExp,
+      totalIntExp,
+      curIntInc,
+      totalIntInc,
+      curStateTaxes,
+      totalStateTaxes,
+      curFedTaxes,
+      meals,
+      entertainment,
+      nondeductible,
+      penalty,
+      sigExp,
+      sigInc,
+      retirement,
+      otherEmp
+    } = project
     return (
       <div>
         <h2>Welcome, {email}</h2>
         <br />
-        <br />
-        <h3>Your current projection</h3>
-        netIncome: 0, currentMonth: 0, curBonus: 0, totalBonus: 0, curDep: 0,
-        curAmort: 0, totalDep: 0, totalAmort: 0, curIntExp: 0, totalIntExp: 0,
-        curIntInc: 0, totalIntInc: 0, curStateTaxes: 0, totalStateTaxes: 0,
-        curFedTaxes: 0, totalFedTaxes: 0, meals: 0, entertainment: 0,
-        nondeductible: 0, penalty: 0, sigExp: 0, sigInc: 0, retirement: 0,
-        otherEmp: 0
-        {/* Feature to be added later */}
-        {/* {this.state.showProjection
-          ? <Projection id={id} get={get} create={create} update={update} project={project}/>
-          : <button type="button" onClick={this.handleClick}>My Projection</button>
-        } */}
+
+        <h2>Your current projection</h2>
+        <table>
+          <tr>
+            <th>Line Item</th>
+            <th>Information</th>
+          </tr>
+
+          <tr>
+            <th>Before Annualization</th>
+          </tr>
+
+          <tr>
+            <td>Net Income</td>
+
+            <td>{addComma(netIncome)}</td>
+            {/* <td>{addComma(netIncome)}</td> */}
+            {/* This is the base */}
+          </tr>
+
+          <tr>
+            <td>Significant Income</td>
+            <td>{addComma(sigInc)}</td>
+            {/* Remove now. Add back after annualization */}
+          </tr>
+
+          <tr>
+            <td>Significant Expenses</td>
+            <td>{addComma(sigExp)}</td>
+            {/* Add back now. Remove after annualization */}
+          </tr>
+
+          <tr>
+            <td>Current Depreciation</td>
+            <td>{addComma(curDep)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Current Amortization</td>
+            <td>{addComma(curAmort)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Bonuses Paid</td>
+            <td>{addComma(curBonus)}</td>
+            {/* Add back now. Remove after annualization */}
+          </tr>
+
+          <tr>
+            <td>Interest Expense Paid</td>
+            <td>{addComma(curIntExp)}</td>
+            {/* Add back now. Remove after annualization */}
+          </tr>
+
+          <tr>
+            <td>Interest Income Received</td>
+            <td>{addComma(curIntInc)}</td>
+            {/* Remove now. Add back after annualization */}
+          </tr>
+
+          <tr>
+            <td>Federal Taxes Paid</td>
+            <td>{addComma(curFedTaxes)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>State Taxes Paid</td>
+            <td>{addComma(curStateTaxes)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Penalties Paid</td>
+            <td>{addComma(penalty)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Meals</td>
+            <td>{addComma(meals)}</td>
+            {/* Add back 50% */}
+          </tr>
+
+          <tr>
+            <td>Entertainment</td>
+            <td>{addComma(entertainment)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Other Nondeductible Expenses</td>
+            <td>{addComma(nondeductible)}</td>
+            {/* Add back */}
+          </tr>
+
+          <tr>
+            <td>Adjusted Net Income Before Annualization</td>
+            <td>
+              {addComma(
+                netIncome -
+                  sigInc +
+                  sigExp +
+                  curDep +
+                  curAmort +
+                  curBonus +
+                  curIntExp -
+                  curIntInc +
+                  curFedTaxes +
+                  curStateTaxes +
+                  penalty +
+                  0.5 * meals +
+                  entertainment +
+                  nondeductible
+              )}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Annualized Net Income</td>
+            <td>
+              {addComma(
+                (netIncome -
+                  sigInc +
+                  sigExp +
+                  curDep +
+                  curAmort +
+                  curBonus +
+                  curIntExp -
+                  curIntInc +
+                  curFedTaxes +
+                  curStateTaxes +
+                  penalty +
+                  0.5 * meals +
+                  entertainment +
+                  nondeductible) /
+                  (currentMonth / 12)
+              )}
+            </td>
+          </tr>
+
+          <tr>
+            <th>After Annualization</th>
+          </tr>
+
+          <tr>
+            <td>Annualized Net Income</td>
+            <td>
+              {addComma(
+                (netIncome -
+                  sigInc +
+                  sigExp +
+                  curDep +
+                  curAmort +
+                  curBonus +
+                  curIntExp -
+                  curIntInc +
+                  curFedTaxes +
+                  curStateTaxes +
+                  penalty +
+                  0.5 * meals +
+                  entertainment +
+                  nondeductible) /
+                  (currentMonth / 12)
+              )}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Significant Income</td>
+            <td>{addComma(sigInc)}</td>
+          </tr>
+
+          <tr>
+            <td>Significant Expenses</td>
+            <td>{addComma(sigExp)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Depreciation</td>
+            <td>{addComma(totalDep)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Amortization</td>
+            <td>{addComma(totalAmort)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Bonuses</td>
+            <td>{addComma(curBonus + totalBonus)}</td>
+          </tr>
+
+          <tr>
+            <td>Retirement Contributions</td>
+            <td>{addComma(retirement)}</td>
+          </tr>
+
+          <tr>
+            <td>Other Employment Expenses</td>
+            <td>{addComma(otherEmp)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Interest Expense</td>
+            <td>{addComma(totalIntExp)}</td>
+          </tr>
+
+          <tr>
+            <td>Total Interest Income</td>
+            <td>{addComma(totalIntInc)}</td>
+          </tr>
+
+          <tr>
+            <td>Total State Tax Liability</td>
+            <td>{addComma(totalStateTaxes)}</td>
+          </tr>
+
+          <tr>
+            <td>
+              Anticipated Taxable Net Income<strong>*</strong>
+            </td>
+            <td>
+              {addComma(
+                (netIncome -
+                  sigInc +
+                  sigExp +
+                  curDep +
+                  curAmort +
+                  curBonus +
+                  curIntExp -
+                  curIntInc +
+                  curFedTaxes +
+                  curStateTaxes +
+                  penalty +
+                  0.5 * meals +
+                  entertainment +
+                  nondeductible) /
+                  (currentMonth / 12) +
+                  sigInc -
+                  sigExp -
+                  totalDep -
+                  totalAmort -
+                  curBonus -
+                  totalBonus -
+                  retirement -
+                  otherEmp -
+                  totalIntExp +
+                  totalIntInc -
+                  totalStateTaxes
+              )}
+            </td>
+          </tr>
+        </table>
+
+        <h4 id="warning">
+          *This does not include adjustments for current and prior year Accounts
+          Receivable and Accounts Payable, or any other tax adjustments that may
+          be required and any tax saving strategies your accountant may
+          recommend. This is informational only. Please do not make business
+          decisions based on this projection.
+        </h4>
       </div>
     )
   }
