@@ -75,7 +75,7 @@ export class FormBonus extends Component {
                 id="outlined-name"
                 label="Bonuses Paid To Date"
                 className={classes.textField}
-                value={values.curBonus || 0}
+                value={values.curBonus}
                 onChange={handleChange('curBonus')}
                 margin="normal"
                 variant="outlined"
@@ -86,7 +86,7 @@ export class FormBonus extends Component {
                 id="outlined-name"
                 label="Additional Bonuses Anticipated"
                 className={classes.textField}
-                value={values.totalBonus || 0}
+                value={values.totalBonus}
                 helperText="Enter the total bonuses anticipate to be issued for the remainder of the year"
                 onChange={handleChange('totalBonus')}
                 margin="normal"
@@ -98,7 +98,7 @@ export class FormBonus extends Component {
                 id="outlined-name"
                 label="Year-End Retirement Contributions"
                 className={classes.textField}
-                value={values.retirement || 0}
+                value={values.retirement}
                 helperText="Expected year-end contributions to retirement plans"
                 onChange={handleChange('retirement')}
                 margin="normal"
@@ -110,7 +110,7 @@ export class FormBonus extends Component {
                 id="outlined-name"
                 label="Other Anticipated Expenses"
                 className={classes.textField}
-                value={values.otherEmp || 0}
+                value={values.otherEmp}
                 helperText="Other significant expenditures anticipated for the remainder of the year related to employment or retirement"
                 onChange={handleChange('otherEmp')}
                 margin="normal"

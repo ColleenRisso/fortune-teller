@@ -91,7 +91,7 @@ export class FormTax extends Component {
                 label="Meals"
                 helperText="Assumes the meals have a business purposes. Do not include food or drink provided to all employees such as Christmas parties or office snacks"
                 className={classes.textField}
-                value={values.meals || 0}
+                value={values.meals}
                 onChange={handleChange('meals')}
                 margin="normal"
                 variant="outlined"
@@ -102,7 +102,7 @@ export class FormTax extends Component {
                 id="outlined-name"
                 label="Entertainment"
                 className={classes.textField}
-                value={values.entertainment || 0}
+                value={values.entertainment}
                 onChange={handleChange('entertainment')}
                 margin="normal"
                 variant="outlined"
@@ -116,7 +116,7 @@ export class FormTax extends Component {
                 label="Other Nondeductible Expenses"
                 helperText="Expenses such as parking tickets, gifts, life insurance, disability insurance, political contributions and country club memberships"
                 className={classes.textField}
-                value={values.nondeductible || 0}
+                value={values.nondeductible}
                 onChange={handleChange('nondeductible')}
                 margin="normal"
                 variant="outlined"

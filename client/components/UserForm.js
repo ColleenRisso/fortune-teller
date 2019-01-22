@@ -49,6 +49,12 @@ export class UserForm extends Component {
   async componentDidMount() {
     await this.props.loadInitialData()
     await this.props.get(this.props.id)
+    if (this.props.project) {
+      this.setState({
+        step: 1,
+        ...this.props.project
+      })
+    }
   }
 
   // Proceed to next step

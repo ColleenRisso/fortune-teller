@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -61,13 +60,65 @@ export class FormTax extends Component {
 
   update = event => {
     event.preventDefault()
-    this.props.update(this.props.id, this.props.values)
+    const submission = {
+      currentMonth: this.props.values.currentMonth,
+      netIncome: this.props.values.netIncome,
+      curBonus: this.props.values.curBonus || 0,
+      totalBonus: this.props.values.totalBonus || 0,
+      curDep: this.props.values.curDep || 0,
+      curAmort: this.props.values.curAmort || 0,
+      totalDep: this.props.values.totalDep || 0,
+      totalAmort: this.props.values.totalAmort || 0,
+      curIntExp: this.props.values.curIntExp || 0,
+      totalIntExp: this.props.values.totalIntExp || 0,
+      curIntInc: this.props.values.curIntInc || 0,
+      totalIntInc: this.props.values.totalIntInc || 0,
+      curStateTaxes: this.props.values.curStateTaxes || 0,
+      totalStateTaxes: this.props.values.totalStateTaxes || 0,
+      curFedTaxes: this.props.values.curFedTaxes || 0,
+      totalFedTaxes: this.props.values.totalFedTaxes || 0,
+      meals: this.props.values.meals || 0,
+      entertainment: this.props.values.entertainment || 0,
+      nondeductible: this.props.values.nondeductible || 0,
+      penalty: this.props.values.penalty || 0,
+      sigExp: this.props.values.sigExp || 0,
+      sigInc: this.props.values.sigInc || 0,
+      retirement: this.props.values.retirement || 0,
+      otherEmp: this.props.valuesotherEmp || 0
+    }
+    this.props.update(this.props.id, submission)
     this.props.nextStep()
   }
 
   create = event => {
     event.preventDefault()
-    this.props.create(this.props.id, this.props.values)
+    const submission = {
+      currentMonth: this.props.values.currentMonth,
+      netIncome: this.props.values.netIncome,
+      curBonus: this.props.values.curBonus || 0,
+      totalBonus: this.props.values.totalBonus || 0,
+      curDep: this.props.values.curDep || 0,
+      curAmort: this.props.values.curAmort || 0,
+      totalDep: this.props.values.totalDep || 0,
+      totalAmort: this.props.values.totalAmort || 0,
+      curIntExp: this.props.values.curIntExp || 0,
+      totalIntExp: this.props.values.totalIntExp || 0,
+      curIntInc: this.props.values.curIntInc || 0,
+      totalIntInc: this.props.values.totalIntInc || 0,
+      curStateTaxes: this.props.values.curStateTaxes || 0,
+      totalStateTaxes: this.props.values.totalStateTaxes || 0,
+      curFedTaxes: this.props.values.curFedTaxes || 0,
+      totalFedTaxes: this.props.values.totalFedTaxes || 0,
+      meals: this.props.values.meals || 0,
+      entertainment: this.props.values.entertainment || 0,
+      nondeductible: this.props.values.nondeductible || 0,
+      penalty: this.props.values.penalty || 0,
+      sigExp: this.props.values.sigExp || 0,
+      sigInc: this.props.values.sigInc || 0,
+      retirement: this.props.values.retirement || 0,
+      otherEmp: this.props.valuesotherEmp || 0
+    }
+    this.props.create(this.props.id, submission)
     this.props.nextStep()
   }
 
@@ -124,14 +175,36 @@ export class FormTax extends Component {
         <div className={classes.demo}>
           <List>
             {/* Income Form */}
+            {currentMonth ? (
+              <ListItem>
+                <ListItemText
+                  primary="Current Month"
+                  secondary={currentMonth}
+                />
+              </ListItem>
+            ) : (
+              <ListItem>
+                <ListItemText
+                  color="secondary"
+                  primary="Current Month"
+                  secondary="A value was not entered. Your projection will not be properly created without this information."
+                />
+              </ListItem>
+            )}
 
-            <ListItem>
-              <ListItemText primary="Current Month" secondary={currentMonth} />
-            </ListItem>
-
-            <ListItem>
-              <ListItemText primary="Net Income" secondary={netIncome} />
-            </ListItem>
+            {netIncome ? (
+              <ListItem>
+                <ListItemText primary="Net Income" secondary={netIncome} />
+              </ListItem>
+            ) : (
+              <ListItem>
+                <ListItemText
+                  color="secondary"
+                  primary="Net Income"
+                  secondary="A value was not entered. Your projection will not be properly created without this information."
+                />
+              </ListItem>
+            )}
 
             <ListItem>
               <ListItemText primary="Significant Income" secondary={sigInc} />
@@ -297,6 +370,7 @@ export class FormTax extends Component {
                 variant="contained"
                 className={classes.button}
                 onClick={this.update}
+                disabled={!(currentMonth && netIncome)}
               >
                 Update Existing Projection
               </Button>
@@ -308,6 +382,7 @@ export class FormTax extends Component {
                 color="primary"
                 className={classes.button}
                 onClick={this.create}
+                disabled={!(currentMonth && netIncome)}
               >
                 Create Projection
               </Button>

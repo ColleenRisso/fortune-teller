@@ -71,9 +71,7 @@ export class FormIncome extends Component {
                 id="outlined-required"
                 label="Month of Financials"
                 helperText="The month for which the financials have been prepared. For example, for April enter a 4."
-                error={
-                  !!(values.currentMonth < 1 || values.currentMonth > 12)
-                }
+                error={!!(values.currentMonth < 1 || values.currentMonth > 12)}
                 className={classes.textField}
                 value={values.currentMonth}
                 onChange={handleChange('currentMonth')}
@@ -100,7 +98,7 @@ export class FormIncome extends Component {
                 id="outlined-name"
                 label="Significant Income"
                 className={classes.textField}
-                value={values.sigInc || 0}
+                value={values.sigInc}
                 helperText="Any income earned or received that would not represent the normal course of business if annualized"
                 onChange={handleChange('sigInc')}
                 margin="normal"
@@ -112,7 +110,7 @@ export class FormIncome extends Component {
                 id="outlined-name"
                 label="Significant Expenses"
                 className={classes.textField}
-                value={values.sigExp || 0}
+                value={values.sigExp}
                 helperText="Any expenses paid that would not represent the normal course of business if annualized"
                 onChange={handleChange('sigExp')}
                 margin="normal"

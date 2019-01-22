@@ -75,7 +75,7 @@ export class FormDepreciation extends Component {
                 id="outlined-name"
                 label="Current Depreciation"
                 className={classes.textField}
-                value={values.curDep || 0}
+                value={values.curDep}
                 helperText="If your business records depreciation throughout the year, any depreciation reported year to date"
                 onChange={handleChange('curDep')}
                 margin="normal"
@@ -87,7 +87,7 @@ export class FormDepreciation extends Component {
                 id="outlined-name"
                 label="Current Amortization"
                 className={classes.textField}
-                value={values.curAmort || 0}
+                value={values.curAmort}
                 helperText="If your business records amortization throughout the year, any amortization reported year to date"
                 onChange={handleChange('curAmort')}
                 margin="normal"
@@ -99,7 +99,7 @@ export class FormDepreciation extends Component {
                 id="outlined-name"
                 label="Total Anticipated Depreciation"
                 className={classes.textField}
-                value={values.totalDep || 0}
+                value={values.totalDep}
                 helperText="Expected annualized amount, if known. Please consult you accountant and to learn more about potential tax-saving strategies"
                 onChange={handleChange('totalDep')}
                 margin="normal"
@@ -111,7 +111,7 @@ export class FormDepreciation extends Component {
                 id="outlined-name"
                 label="Total Anticipated Amortization"
                 className={classes.textField}
-                value={values.totalAmort || 0}
+                value={values.totalAmort}
                 helperText="Expected annualized amount, if known"
                 onChange={handleChange('totalAmort')}
                 margin="normal"

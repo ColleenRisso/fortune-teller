@@ -87,7 +87,7 @@ export class FormTax extends Component {
                 label="Federal Taxes Paid"
                 helperText="Exclude any late interest and penalties"
                 className={classes.textField}
-                value={values.curFedTaxes || 0}
+                value={values.curFedTaxes}
                 onChange={handleChange('curFedTaxes')}
                 margin="normal"
                 variant="outlined"
@@ -99,7 +99,7 @@ export class FormTax extends Component {
                 label="State Taxes Paid"
                 helperText="Include and LLC fees, exclude any late interest and penalties"
                 className={classes.textField}
-                value={values.curStateTaxes || 0}
+                value={values.curStateTaxes}
                 onChange={handleChange('curStateTaxes')}
                 margin="normal"
                 variant="outlined"
@@ -113,7 +113,7 @@ export class FormTax extends Component {
                 label="Total Federal Tax Liability"
                 helperText="Total federal tax liability for the current year. Do not includes any late fees or penalties"
                 className={classes.textField}
-                value={values.totalFedTaxes || 0}
+                value={values.totalFedTaxes}
                 onChange={handleChange('totalFedTaxes')}
                 margin="normal"
                 variant="outlined"
@@ -125,7 +125,7 @@ export class FormTax extends Component {
                 label="Total State Tax Liability"
                 helperText="Total state tax liability for the current year, including the LLC fees. Do not includes any late fees or penalties"
                 className={classes.textField}
-                value={values.totalStateTaxes || 0}
+                value={values.totalStateTaxes}
                 onChange={handleChange('totalStateTaxes')}
                 margin="normal"
                 variant="outlined"
@@ -137,7 +137,7 @@ export class FormTax extends Component {
                 label="Penalties and Interest"
                 helperText="Only include penalties and interest paid to date for tax returns"
                 className={classes.textField}
-                value={values.penalty || 0}
+                value={values.penalty}
                 onChange={handleChange('penalty')}
                 margin="normal"
                 variant="outlined"
