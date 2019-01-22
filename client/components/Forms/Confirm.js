@@ -61,7 +61,7 @@ export class FormTax extends Component {
 
   update = event => {
     event.preventDefault()
-    this.props.update(this.props.id, this.props.project)
+    this.props.update(this.props.id, this.props.values)
     this.props.nextStep()
   }
 
