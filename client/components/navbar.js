@@ -86,7 +86,11 @@ class Navbar extends Component {
               </Hidden>
               <Grid item xs />
               <Grid item>
-                <Typography className={classes.link} component="a" href="#">
+                <Typography
+                  className={classes.link}
+                  component="a"
+                  href="https://github.com/ColleenRisso/fortune-teller"
+                >
                   Developer Code
                 </Typography>
               </Grid>
@@ -125,17 +129,19 @@ class Navbar extends Component {
                   Incoming!
                 </Typography>
               </Grid>
-              <Grid item>
-                <Button
-                  className={classes.button}
-                  variant="outlined"
-                  color="inherit"
-                  size="small"
-                  onClick={this.props.handleClick}
-                >
-                  Logout
-                </Button>
-              </Grid>
+              {isLoggedIn ? (
+                <Grid item>
+                  <Button
+                    className={classes.button}
+                    variant="outlined"
+                    color="inherit"
+                    size="small"
+                    onClick={this.props.handleClick}
+                  >
+                    Logout
+                  </Button>
+                </Grid>
+              ) : null}
               <Grid item>
                 <Tooltip title="Help">
                   <IconButton color="inherit">
