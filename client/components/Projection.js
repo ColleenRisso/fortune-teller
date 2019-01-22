@@ -7,6 +7,9 @@ import {
 } from '../store/project'
 import {me} from '../store'
 import {addComma} from '../../script/util'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 export class Projection extends Component {
   async componentDidMount() {
@@ -44,7 +47,26 @@ export class Projection extends Component {
     } = project
     return (
       <div>
-        <h2>Your current projection</h2>
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper>
+              <Typography color="primary" variant="headline" component="h3">
+                Your Current Projection
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper>
+              <Typography color="secondary" variant="subheading" component="h3">
+                *This does not include adjustments for current and prior year
+                Accounts Receivable and Accounts Payable, or any other tax
+                adjustments that may be required and any tax saving strategies
+                your accountant may recommend. This is informational only.
+                Please do not make business decisions based on this projection.
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
 
         <table>
           <tr>
@@ -301,13 +323,14 @@ export class Projection extends Component {
           </tr>
         </table>
 
-        <h4 id="warning">
-          *This does not include adjustments for current and prior year Accounts
-          Receivable and Accounts Payable, or any other tax adjustments that may
-          be required and any tax saving strategies your accountant may
-          recommend. This is informational only. Please do not make business
-          decisions based on this projection.
-        </h4>
+        <Paper>
+          <Typography color="inherit" variant="overline" component="h3">
+            __
+          </Typography>
+          <Typography color="inherit" variant="overline" component="h3">
+            __
+          </Typography>
+        </Paper>
       </div>
     )
   }

@@ -163,13 +163,13 @@ class Navbar extends Component {
                   component={Link}
                   to="/projection"
                 />
-                <Tab
+                {/* <Tab
                   key="Creat Graphs"
                   textColor="inherit"
                   label="Create Graphs"
                   component={Link}
                   to="/graph"
-                />
+                /> */}
                 <Tab
                   key="About"
                   textColor="inherit"
@@ -201,12 +201,12 @@ class Navbar extends Component {
                   component={Link}
                   to="/signup"
                 />
-                <Tab
+                {/* <Tab
                   textColor="inherit"
                   label="Projection"
                   component={Link}
                   to="/projection"
-                />
+                /> */}
                 <Tab
                   textColor="inherit"
                   label="About"
