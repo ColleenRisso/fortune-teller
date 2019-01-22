@@ -111,31 +111,6 @@ export class Root extends Component {
             </Grid>
           </Grid>
         </Paper>
-
-        <br />
-        <br />
-
-        <Grid container spacing={24}>
-          <Grid item xs={8}>
-            <Paper className={classes.root} elevation={1}>
-              <Typography variant="h5" component="h3" color="secondary">
-                A notice regarding tax information
-              </Typography>
-              <Typography
-                variant="body"
-                component="h5"
-                color="secondary"
-                fontWeight="fontWeightMedium"
-              >
-                Due to the nature and complexity of tax laws, please consult
-                with your accountant before making a business decisions. This
-                app is in no way intended to, nor capable of, replacing the
-                in-depth knowledge an accountant has of your business and the
-                current tax laws.
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
       </Paper>
     )
   }
