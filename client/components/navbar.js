@@ -131,8 +131,9 @@ class Navbar extends Component {
                   variant="outlined"
                   color="inherit"
                   size="small"
+                  onClick={this.props.handleClick}
                 >
-                  Form Assistance
+                  Logout
                 </Button>
               </Grid>
               <Grid item>
@@ -207,16 +208,17 @@ class Navbar extends Component {
                   to="/login"
                 />
                 <Tab
+                  key="Sign-up"
+                  textColor="inherit"
+                  label="Sign-up"
+                  component={Link}
+                  to="/signup"
+                />
+                <Tab
                   textColor="inherit"
                   label="Projection"
                   component={Link}
                   to="/projection"
-                />
-                <Tab
-                  textColor="inherit"
-                  label="Create Graphs"
-                  component={Link}
-                  to="/graph"
                 />
                 <Tab
                   textColor="inherit"
