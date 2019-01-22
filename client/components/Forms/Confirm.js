@@ -51,18 +51,38 @@ const styles = theme => ({
 export class FormTax extends Component {
   continue = event => {
     event.preventDefault()
+    if (this.props.project) {
+      this.props.update(this.props.id, this.props.project)
+    } else {
+      this.props.create(this.props.id, this.props.values)
+    }
     this.props.nextStep() //passed from parent component (UserForm)
+  }
+
+  update = event => {
+    event.preventDefault()
+    this.props.update(this.props.id, this.props.values)
+    this.props.nextStep()
+  }
+
+  create = event => {
+    event.preventDefault()
+    this.props.create(this.props.id, this.props.values)
+    this.props.nextStep()
   }
 
   back = event => {
     event.preventDefault()
-    this.props.prevStep() //passed from parent component (UserForm)
+    //these thunks all passed from parent component (UserForm)
+    this.props.prevStep()
   }
 
   render() {
+    console.log('DO I EXIST', this.props.project)
     const {
       classes,
       values: {
+        currentMonth,
         netIncome,
         curBonus,
         totalBonus,
@@ -105,6 +125,11 @@ export class FormTax extends Component {
         <div className={classes.demo}>
           <List>
             {/* Income Form */}
+
+            <ListItem>
+              <ListItemText primary="Current Month" secondary={currentMonth} />
+            </ListItem>
+
             <ListItem>
               <ListItemText primary="Net Income" secondary={netIncome} />
             </ListItem>
@@ -267,16 +292,28 @@ export class FormTax extends Component {
               Previous
             </Button>
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={this.continue}
-            >
-              Confirm & Continue
-            </Button>
-          </Grid>
+          {this.props.project ? (
+            <Grid item xs={6} sm={3}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.update}
+              >
+                Update Existing Projection
+              </Button>
+            </Grid>
+          ) : (
+            <Grid item xs={6} sm={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.create}
+              >
+                Create Projection
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </div>
     )

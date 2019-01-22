@@ -76,7 +76,7 @@ export class FormInterest extends Component {
                 label="Interest Expense Paid"
                 helperText="Enter the interest expense year-to-date"
                 className={classes.textField}
-                value={values.curIntExp}
+                value={values.curIntExp || 0}
                 onChange={handleChange('curIntExp')}
                 margin="normal"
                 variant="outlined"
@@ -88,7 +88,7 @@ export class FormInterest extends Component {
                 label="Total Interest Expense"
                 helperText="Enter the total interest expense due for the year, including the amounts already paid"
                 className={classes.textField}
-                value={values.totalIntExp}
+                value={values.totalIntExp || 0}
                 onChange={handleChange('totalIntExp')}
                 margin="normal"
                 variant="outlined"
@@ -100,7 +100,7 @@ export class FormInterest extends Component {
                 label="Interest Income Received"
                 helperText="Enter the interest income year-to-date"
                 className={classes.textField}
-                value={values.curIntInc}
+                value={values.curIntInc || 0}
                 onChange={handleChange('curIntInc')}
                 margin="normal"
                 variant="outlined"
@@ -112,7 +112,7 @@ export class FormInterest extends Component {
                 label="Total Interest Income"
                 helperText="Enter the total interest income anticipated for the year, including the amounts already received"
                 className={classes.textField}
-                value={values.totalIntInc}
+                value={values.totalIntInc || 0}
                 onChange={handleChange('totalIntInc')}
                 margin="normal"
                 variant="outlined"

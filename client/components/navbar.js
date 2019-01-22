@@ -86,7 +86,11 @@ class Navbar extends Component {
               </Hidden>
               <Grid item xs />
               <Grid item>
-                <Typography className={classes.link} component="a" href="#">
+                <Typography
+                  className={classes.link}
+                  component="a"
+                  href="https://github.com/ColleenRisso/fortune-teller"
+                >
                   Developer Code
                 </Typography>
               </Grid>
@@ -125,16 +129,19 @@ class Navbar extends Component {
                   Incoming!
                 </Typography>
               </Grid>
-              <Grid item>
-                <Button
-                  className={classes.button}
-                  variant="outlined"
-                  color="inherit"
-                  size="small"
-                >
-                  Form Assistance
-                </Button>
-              </Grid>
+              {isLoggedIn ? (
+                <Grid item>
+                  <Button
+                    className={classes.button}
+                    variant="outlined"
+                    color="inherit"
+                    size="small"
+                    onClick={this.props.handleClick}
+                  >
+                    Logout
+                  </Button>
+                </Grid>
+              ) : null}
               <Grid item>
                 <Tooltip title="Help">
                   <IconButton color="inherit">
@@ -207,16 +214,17 @@ class Navbar extends Component {
                   to="/login"
                 />
                 <Tab
+                  key="Sign-up"
+                  textColor="inherit"
+                  label="Sign-up"
+                  component={Link}
+                  to="/signup"
+                />
+                <Tab
                   textColor="inherit"
                   label="Projection"
                   component={Link}
                   to="/projection"
-                />
-                <Tab
-                  textColor="inherit"
-                  label="Create Graphs"
-                  component={Link}
-                  to="/graph"
                 />
                 <Tab
                   textColor="inherit"

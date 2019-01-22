@@ -33,16 +33,16 @@ export const getProjectThunk = userId => {
   }
 }
 
-export const createProjectThunk = userId => {
+export const createProjectThunk = (userId, projectData) => {
   return async dispatch => {
-    const {data} = await axios.post(`/api/project/${userId}`)
+    const {data} = await axios.post(`/api/project/${userId}`, projectData)
     dispatch(getProject(data))
   }
 }
 
-export const updateProjectThunk = userId => {
+export const updateProjectThunk = (userId, projectData) => {
   return async dispatch => {
-    const {data} = await axios.put(`/api/project/${userId}`)
+    const {data} = await axios.put(`/api/project/${userId}`, projectData)
     dispatch(getProject(data))
   }
 }

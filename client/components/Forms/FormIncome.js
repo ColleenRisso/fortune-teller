@@ -65,36 +65,54 @@ export class FormIncome extends Component {
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="outlined-required"
+                label="Month of Financials"
+                helperText="The month for which the financials have been prepared. For example, for April enter a 4."
+                error={
+                  !!(values.currentMonth < 1 || values.currentMonth > 12)
+                }
+                className={classes.textField}
+                value={values.currentMonth}
+                onChange={handleChange('currentMonth')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <TextField
                 required
                 id="outlined-required"
                 label="Year-To-Date Net Income"
+                helperText="Zero is a valid number, but must be confirmed"
                 className={classes.textField}
                 value={values.netIncome}
+                error={!values.netIncome}
                 onChange={handleChange('netIncome')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
                 label="Significant Income"
                 className={classes.textField}
-                value={values.sigInc}
+                value={values.sigInc || 0}
                 helperText="Any income earned or received that would not represent the normal course of business if annualized"
                 onChange={handleChange('sigInc')}
                 margin="normal"
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
                 label="Significant Expenses"
                 className={classes.textField}
-                value={values.sigExp}
+                value={values.sigExp || 0}
                 helperText="Any expenses paid that would not represent the normal course of business if annualized"
                 onChange={handleChange('sigExp')}
                 margin="normal"

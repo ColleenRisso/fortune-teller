@@ -2,6 +2,13 @@
 /* eslint-disable default-case */
 import React, {Component} from 'react'
 import FormIncome from './Forms/FormIncome'
+import {connect} from 'react-redux'
+import {
+  getProjectThunk,
+  createProjectThunk,
+  updateProjectThunk
+} from '../store/project'
+import {me} from '../store'
 import FormDepreciation from './Forms/FormDepreciation'
 import FormBonus from './Forms/FormBonus'
 import FormInterest from './Forms/FormInterest'
@@ -13,6 +20,7 @@ import Success from './Forms/Success'
 export class UserForm extends Component {
   state = {
     step: 1,
+    currentMonth: 0,
     netIncome: 0, //starting point
     sigInc: 0, //any unusual income that would not represent the normal course of business if annualized
     sigExp: 0, //any unusual expense that would not represent the normal course of business if annualized
@@ -36,6 +44,11 @@ export class UserForm extends Component {
     entertainment: 0, //subject to 100% limitation, must enter at 100%
     nondeductible: 0, //anything that is a fine, penalty, etc. Enter at 100%.
     penalty: 0 //specifically for taxes. Includes interest
+  }
+
+  async componentDidMount() {
+    await this.props.loadInitialData()
+    await this.props.get(this.props.id)
   }
 
   // Proceed to next step
@@ -62,8 +75,10 @@ export class UserForm extends Component {
   }
 
   render() {
+    console.log('********this.props', this.props)
     const {step} = this.state
     const {
+      currentMonth,
       netIncome,
       curBonus,
       totalBonus,
@@ -89,6 +104,7 @@ export class UserForm extends Component {
       otherEmp
     } = this.state
     const values = {
+      currentMonth,
       netIncome,
       curBonus,
       totalBonus,
@@ -172,6 +188,10 @@ export class UserForm extends Component {
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            project={this.props.project}
+            id={this.props.id}
+            create={this.props.create}
+            update={this.props.update}
             values={values}
           />
         )
@@ -181,4 +201,18 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm
+const mapDispatch = {
+  loadInitialData: me,
+  get: getProjectThunk, //takes a userId
+  create: createProjectThunk, //takes a userId
+  update: updateProjectThunk //takes a userId
+}
+
+const mapState = state => {
+  return {
+    id: state.user.id,
+    project: state.project
+  }
+}
+
+export default connect(mapState, mapDispatch)(UserForm)
