@@ -78,7 +78,6 @@ export class FormTax extends Component {
   }
 
   render() {
-    console.log('DO I EXIST', this.props.project)
     const {
       classes,
       values: {
