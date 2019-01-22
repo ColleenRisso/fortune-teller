@@ -19,3 +19,24 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+table {
+  border: solid black;
+  border-spacing: 5px;
+}
+
+td {
+  border-spacing: 10px;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background: #ccc;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
+
+#warning {
+  color: red;
+}

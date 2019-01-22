@@ -1,14 +1,14 @@
 /* eslint-disable complexity */
 /* eslint-disable default-case */
 import React, {Component} from 'react'
-import FormIncome from './FormIncome'
-import FormDepreciation from './FormDepreciation'
-import FormBonus from './FormBonus'
-import FormInterest from './FormInterest'
-import FormTax from './FormTax'
-import FormNDE from './FormNDE'
-import Confirm from './Confirm'
-import Success from './Success'
+import FormIncome from './Forms/FormIncome'
+import FormDepreciation from './Forms/FormDepreciation'
+import FormBonus from './Forms/FormBonus'
+import FormInterest from './Forms/FormInterest'
+import FormTax from './Forms/FormTax'
+import FormNDE from './Forms/FormNDE'
+import Confirm from './Forms/Confirm'
+import Success from './Forms/Success'
 
 export class UserForm extends Component {
   state = {
