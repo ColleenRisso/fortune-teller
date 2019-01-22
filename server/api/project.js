@@ -31,7 +31,6 @@ router.get('/:userId', async (request, response, next) => {
 
 //allows a user to create a projection
 router.post('/:userId', async (request, response, next) => {
-  console.log('****** POST REQUEST BODY', request.body)
   if (request.user.id == request.params.userId) {
     try {
       response.json(await Project.create(request.body))

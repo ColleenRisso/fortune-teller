@@ -59,7 +59,17 @@ export class FormTax extends Component {
     this.props.nextStep() //passed from parent component (UserForm)
   }
 
-  handleClick() {}
+  update = event => {
+    event.preventDefault()
+    this.props.update(this.props.id, this.props.project)
+    this.props.nextStep()
+  }
+
+  create = event => {
+    event.preventDefault()
+    this.props.create(this.props.id, this.props.values)
+    this.props.nextStep()
+  }
 
   back = event => {
     event.preventDefault()
@@ -282,35 +292,28 @@ export class FormTax extends Component {
               Previous
             </Button>
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={this.continue}
-            >
-              Confirm & Continue
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Button
-              variant="contained"
-              className={classes.button}
-              onClick={this.update}
-            >
-              Update
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={this.create}
-            >
-              Create
-            </Button>
-          </Grid>
+          {this.props.project ? (
+            <Grid item xs={6} sm={3}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.update}
+              >
+                Update Existing Projection
+              </Button>
+            </Grid>
+          ) : (
+            <Grid item xs={6} sm={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.create}
+              >
+                Create Projection
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </div>
     )
