@@ -2,6 +2,13 @@
 /* eslint-disable default-case */
 import React, {Component} from 'react'
 import FormIncome from './Forms/FormIncome'
+import {connect} from 'react-redux'
+import {
+  getProjectThunk,
+  createProjectThunk,
+  updateProjectThunk
+} from '../store/project'
+import {me} from '../store'
 import FormDepreciation from './Forms/FormDepreciation'
 import FormBonus from './Forms/FormBonus'
 import FormInterest from './Forms/FormInterest'
@@ -38,6 +45,11 @@ export class UserForm extends Component {
     penalty: 0 //specifically for taxes. Includes interest
   }
 
+  async componentDidMount() {
+    await this.props.loadInitialData()
+    await this.props.get(this.props.id)
+  }
+
   // Proceed to next step
   nextStep = () => {
     const {step} = this.state
@@ -62,6 +74,7 @@ export class UserForm extends Component {
   }
 
   render() {
+    console.log('********this.props', this.props)
     const {step} = this.state
     const {
       netIncome,
@@ -181,4 +194,18 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm
+const mapDispatch = {
+  loadInitialData: me,
+  get: getProjectThunk, //takes a userId
+  create: createProjectThunk, //takes a userId
+  update: updateProjectThunk //takes a userId
+}
+
+const mapState = state => {
+  return {
+    id: state.user.id,
+    project: state.project
+  }
+}
+
+export default connect(mapState, mapDispatch)(UserForm)

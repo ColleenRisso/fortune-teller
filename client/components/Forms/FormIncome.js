@@ -65,7 +65,20 @@ export class FormIncome extends Component {
 
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={24}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="outlined-required"
+                label="Month of Financials"
+                helperText="The month for which the financials have been prepared. For example, for April enter a 4."
+                className={classes.textField}
+                value={values.netIncome}
+                onChange={handleChange('netIncome')}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <TextField
                 required
                 id="outlined-required"
@@ -77,7 +90,7 @@ export class FormIncome extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
                 label="Significant Income"
@@ -89,7 +102,7 @@ export class FormIncome extends Component {
                 variant="outlined"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-name"
                 label="Significant Expenses"

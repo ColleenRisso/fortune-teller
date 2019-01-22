@@ -8,7 +8,7 @@ import {
 } from '../store/project'
 import {Link} from 'react-router-dom'
 import {Projection} from './Projection'
-import {addDecimal, addComma} from '../../script/util'
+import {addComma} from '../../script/util'
 
 export class UserHome extends Component {
   constructor() {
