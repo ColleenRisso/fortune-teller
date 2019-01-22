@@ -58,10 +58,19 @@ export class FormBonus extends Component {
       <div className={classes.root}>
         <br />
         <Grid container spacing={24}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6} md={8}>
             <Paper className={classes.root} elevation={1}>
               <Typography variant="h5" component="h5" color="primary">
                 Employee, Bonuses & Retirement
+              </Typography>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Paper className={classes.root} elevation={1}>
+              <Typography variant="subtitle1" component="h6" color="secondary">
+                Enter information to the nearest dollar amount, as positive
+                numbers.
               </Typography>
             </Paper>
           </Grid>
@@ -119,7 +128,7 @@ export class FormBonus extends Component {
             </Grid>
           </Grid>
           <Grid container spacing={24}>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 className={classes.button}
@@ -128,7 +137,7 @@ export class FormBonus extends Component {
                 Previous
               </Button>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <Button
                 variant="contained"
                 color="primary"

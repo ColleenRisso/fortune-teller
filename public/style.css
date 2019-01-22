@@ -45,3 +45,16 @@ tr:nth-child(odd) {
   position: fixed;
   bottom: 0;
 }
+
+#submit {
+  background-color: #3f50b5;
+  color: white;
+  font: bold;
+  border-radius: 15%;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#auth {
+  padding: 10px;
+}
