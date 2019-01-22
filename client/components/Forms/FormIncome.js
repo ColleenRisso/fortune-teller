@@ -72,8 +72,8 @@ export class FormIncome extends Component {
                 label="Month of Financials"
                 helperText="The month for which the financials have been prepared. For example, for April enter a 4."
                 className={classes.textField}
-                value={values.netIncome}
-                onChange={handleChange('netIncome')}
+                value={values.currentMonth}
+                onChange={handleChange('currentMonth')}
                 margin="normal"
                 variant="outlined"
               />

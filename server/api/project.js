@@ -31,6 +31,7 @@ router.get('/:userId', async (request, response, next) => {
 
 //allows a user to create a projection
 router.post('/:userId', async (request, response, next) => {
+  console.log('****** POST REQUEST BODY', request.body)
   if (request.user.id == request.params.userId) {
     try {
       response.json(await Project.create(request.body))
@@ -44,6 +45,8 @@ router.post('/:userId', async (request, response, next) => {
 
 //allows a user to update their projection
 router.put('/:userId', async (request, response, next) => {
+  console.log('****** PUT REQUEST BODY', request.body)
+  console.log('******CHECK', request.user.id == request.params.userId)
   if (request.user.id == request.params.userId) {
     Project.findOne({where: {userId: request.user.id}})
       .then(project => project.update(request.body))

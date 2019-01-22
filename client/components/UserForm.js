@@ -20,6 +20,7 @@ import Success from './Forms/Success'
 export class UserForm extends Component {
   state = {
     step: 1,
+    currentMonth: 0,
     netIncome: 0, //starting point
     sigInc: 0, //any unusual income that would not represent the normal course of business if annualized
     sigExp: 0, //any unusual expense that would not represent the normal course of business if annualized
@@ -77,6 +78,7 @@ export class UserForm extends Component {
     console.log('********this.props', this.props)
     const {step} = this.state
     const {
+      currentMonth,
       netIncome,
       curBonus,
       totalBonus,
@@ -102,6 +104,7 @@ export class UserForm extends Component {
       otherEmp
     } = this.state
     const values = {
+      currentMonth,
       netIncome,
       curBonus,
       totalBonus,
@@ -185,6 +188,10 @@ export class UserForm extends Component {
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            project={this.props.project}
+            id={this.props.id}
+            create={this.props.create}
+            update={this.props.update}
             values={values}
           />
         )
