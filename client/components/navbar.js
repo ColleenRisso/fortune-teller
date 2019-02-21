@@ -46,7 +46,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tabSelected: 3
+      tabSelected: 2
     }
     this.handleChange = this.handleChange.bind(this)
   }

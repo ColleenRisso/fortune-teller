@@ -65,7 +65,7 @@ export class FormIncome extends Component {
             <Paper className={classes.root} elevation={1}>
               <Typography variant="subtitle1" component="h6" color="secondary">
                 Enter information to the nearest dollar amount, as positive
-                numbers.
+                numbers without commas.
               </Typography>
             </Paper>
           </Grid>

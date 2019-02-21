@@ -18,7 +18,6 @@ export class Projection extends Component {
   }
 
   render() {
-    console.log('********this.props', this.props)
     const {project} = this.props
     const {
       currentMonth,

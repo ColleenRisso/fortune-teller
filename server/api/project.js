@@ -40,7 +40,7 @@ router.post('/:userId', async (request, response, next) => {
       next(error)
     }
   } else {
-    console.log('an unauthorized user attempted a to create a projection')
+    console.log('an unauthorized user attempted to create a projection')
   }
 })
 
@@ -52,6 +52,6 @@ router.put('/:userId', async (request, response, next) => {
       .then(project => response.json(project))
       .catch(next)
   } else {
-    console.log('an unauthorized user attempted a to update a projection')
+    console.log('an unauthorized user attempted to update a projection')
   }
 })

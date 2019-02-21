@@ -40,8 +40,8 @@ export class Success extends Component {
           </Typography>
           <br />
           <Typography variant="h6" component="h6">
-            You can now export your projection as an Excel file for your
-            personal use.
+            {/* You can now export your projection as an Excel file for your
+            personal use. */}
           </Typography>
         </Paper>
 
@@ -63,17 +63,7 @@ export class Success extends Component {
               variant="contained"
               color="primary"
               className={classes.button}
-              // onClick={this.continue} //this needs to export Excel using sheet.js
-            >
-              Export My Projection
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              // onClick={this.continue} //this needs to export Excel using sheet.js
+              onClick={() => console.log('See My Projection')} //this needs to eventually export Excel using sheet.js
             >
               See My Projection
             </Button>

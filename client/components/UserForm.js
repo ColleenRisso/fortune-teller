@@ -81,7 +81,6 @@ export class UserForm extends Component {
   }
 
   render() {
-    console.log('********this.props', this.props)
     const {step} = this.state
     const {
       currentMonth,
