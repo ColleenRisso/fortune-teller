@@ -10,9 +10,9 @@ Users can project their business's annual income based on the information availa
 
 ### Stack
 
-Node
-Express
-React
+Node,
+Express,
+React,
 PSQL (Using Sequelize)
 
 ### Additional Frameworks
