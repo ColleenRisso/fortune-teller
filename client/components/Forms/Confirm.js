@@ -48,6 +48,7 @@ const styles = theme => ({
 })
 
 export class FormTax extends Component {
+  //if there is an existing project, clicking continue will cause the existing project to update. Otherwise, a new project will be created. The form will now move to the next page.
   continue = event => {
     event.preventDefault()
     if (this.props.project) {
@@ -58,19 +59,21 @@ export class FormTax extends Component {
     this.props.nextStep() //passed from parent component (UserForm)
   }
 
+  //updates the existing project
   update = event => {
     event.preventDefault()
     this.props.update(this.props.id, this.props.values)
     this.props.nextStep()
   }
 
+  //creates a new project
   create = event => {
     event.preventDefault()
     this.props.create(this.props.id, this.props.values)
-    console.log('******', this.props.id)
     this.props.nextStep()
   }
 
+  //returns to the previous page
   back = event => {
     event.preventDefault()
     //these thunks all passed from parent component (UserForm)
@@ -123,8 +126,8 @@ export class FormTax extends Component {
 
         <div className={classes.demo}>
           <List>
-            {/* Income Form */}
-            {currentMonth ? (
+            {/* Current Month is required. A warning is thrown if an amount has not been entered by the Confirm screen */}
+            {currentMonth > 0 ? (
               <ListItem>
                 <ListItemText
                   primary="Current Month"
@@ -141,6 +144,7 @@ export class FormTax extends Component {
               </ListItem>
             )}
 
+            {/* Net Income is required. A warning is thrown if an amount has not been entered by the Confirm screen */}
             {netIncome ? (
               <ListItem>
                 <ListItemText primary="Net Income" secondary={netIncome} />

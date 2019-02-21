@@ -68,6 +68,16 @@ export class Success extends Component {
               Export My Projection
             </Button>
           </Grid>
+          <Grid item xs={6} sm={3}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              // onClick={this.continue} //this needs to export Excel using sheet.js
+            >
+              See My Projection
+            </Button>
+          </Grid>
         </Grid>
       </div>
     )
