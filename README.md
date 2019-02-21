@@ -17,7 +17,7 @@ PSQL (Using Sequelize)
 
 ### Additional Frameworks
 
-Redux
+Redux,
 Material-UI
 
 ## Video Demonstration
