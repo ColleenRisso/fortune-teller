@@ -60,65 +60,14 @@ export class FormTax extends Component {
 
   update = event => {
     event.preventDefault()
-    const submission = {
-      currentMonth: this.props.values.currentMonth,
-      netIncome: this.props.values.netIncome,
-      curBonus: this.props.values.curBonus || 0,
-      totalBonus: this.props.values.totalBonus || 0,
-      curDep: this.props.values.curDep || 0,
-      curAmort: this.props.values.curAmort || 0,
-      totalDep: this.props.values.totalDep || 0,
-      totalAmort: this.props.values.totalAmort || 0,
-      curIntExp: this.props.values.curIntExp || 0,
-      totalIntExp: this.props.values.totalIntExp || 0,
-      curIntInc: this.props.values.curIntInc || 0,
-      totalIntInc: this.props.values.totalIntInc || 0,
-      curStateTaxes: this.props.values.curStateTaxes || 0,
-      totalStateTaxes: this.props.values.totalStateTaxes || 0,
-      curFedTaxes: this.props.values.curFedTaxes || 0,
-      totalFedTaxes: this.props.values.totalFedTaxes || 0,
-      meals: this.props.values.meals || 0,
-      entertainment: this.props.values.entertainment || 0,
-      nondeductible: this.props.values.nondeductible || 0,
-      penalty: this.props.values.penalty || 0,
-      sigExp: this.props.values.sigExp || 0,
-      sigInc: this.props.values.sigInc || 0,
-      retirement: this.props.values.retirement || 0,
-      otherEmp: this.props.valuesotherEmp || 0
-    }
-    this.props.update(this.props.id, submission)
+    this.props.update(this.props.id, this.props.values)
     this.props.nextStep()
   }
 
   create = event => {
     event.preventDefault()
-    const submission = {
-      currentMonth: this.props.values.currentMonth,
-      netIncome: this.props.values.netIncome,
-      curBonus: this.props.values.curBonus || 0,
-      totalBonus: this.props.values.totalBonus || 0,
-      curDep: this.props.values.curDep || 0,
-      curAmort: this.props.values.curAmort || 0,
-      totalDep: this.props.values.totalDep || 0,
-      totalAmort: this.props.values.totalAmort || 0,
-      curIntExp: this.props.values.curIntExp || 0,
-      totalIntExp: this.props.values.totalIntExp || 0,
-      curIntInc: this.props.values.curIntInc || 0,
-      totalIntInc: this.props.values.totalIntInc || 0,
-      curStateTaxes: this.props.values.curStateTaxes || 0,
-      totalStateTaxes: this.props.values.totalStateTaxes || 0,
-      curFedTaxes: this.props.values.curFedTaxes || 0,
-      totalFedTaxes: this.props.values.totalFedTaxes || 0,
-      meals: this.props.values.meals || 0,
-      entertainment: this.props.values.entertainment || 0,
-      nondeductible: this.props.values.nondeductible || 0,
-      penalty: this.props.values.penalty || 0,
-      sigExp: this.props.values.sigExp || 0,
-      sigInc: this.props.values.sigInc || 0,
-      retirement: this.props.values.retirement || 0,
-      otherEmp: this.props.valuesotherEmp || 0
-    }
-    this.props.create(this.props.id, submission)
+    this.props.create(this.props.id, this.props.values)
+    console.log('******', this.props.id)
     this.props.nextStep()
   }
 

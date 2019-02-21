@@ -33,7 +33,9 @@ router.get('/:userId', async (request, response, next) => {
 router.post('/:userId', async (request, response, next) => {
   if (request.user.id == request.params.userId) {
     try {
-      response.json(await Project.create(request.body))
+      response.json(
+        await Project.create({userId: request.user.id, ...request.body})
+      )
     } catch (error) {
       next(error)
     }
